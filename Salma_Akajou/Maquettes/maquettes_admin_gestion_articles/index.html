@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoliCode Blog - Gestion des Articles</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { 600: '#2563eb', 700: '#1d4ed8' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hs-accordion.hs-accordion-active .hs-accordion-content {
+            display: block !important;
+        }
+
+        .hs-dropdown.hs-dropdown-open .hs-dropdown-menu {
+            display: block !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-900">
+
+    <!-- Sidebar -->
+    <div id="application-sidebar"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-slate-900 dark:border-gray-700">
+        <div class="px-6">
+            <a class="flex items-center gap-x-2 text-xl font-bold dark:text-white" href="#" aria-label="Brand">
+                <div class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <span>Solicode<span class="text-blue-600">Blog</span></span>
+            </a>
+        </div>
+
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+            <ul class="space-y-1.5 flex flex-col h-full">
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../dashboard-admin.html">
+                        <i data-lucide="layout-dashboard" class="w-[18px] h-[18px]"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="my-4 border-t border-gray-100 dark:border-gray-800"></li>
+                <li class="mb-2 px-3 text-[10px] uppercase tracking-widest text-gray-400 font-bold font-heading">Contenu
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 bg-blue-50 text-sm font-medium text-blue-600 rounded-lg dark:bg-blue-900/50 dark:text-blue-400 focus:outline-none"
+                        href="index.html">
+                        <i data-lucide="file-text" class="w-[18px] h-[18px]"></i>
+                        Articles
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../categories/index.html">
+                        <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
+                        Catégories
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../tags/index.html">
+                        <i data-lucide="tag" class="w-[18px] h-[18px]"></i>
+                        Tags
+                    </a>
+                </li>
+                <li class="my-4 border-t border-gray-100 dark:border-gray-800"></li>
+                <li class="mb-2 px-3 text-[10px] uppercase tracking-widest text-gray-400 font-bold font-heading">Système
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../utilisateurs/index.html">
+                        <i data-lucide="users" class="w-[18px] h-[18px]"></i>
+                        Utilisateurs
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Hader duplicated from dashboard -->
+    <header
+        class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 dark:bg-slate-900 dark:border-gray-700">
+        <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+            <div class="mr-5 lg:mr-0 lg:hidden">
+                <a class="flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="#" aria-label="Brand">
+                    <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </span>
+                    <span>Solicode<span class="text-blue-600">Blog</span></span>
+                </a>
+            </div>
+            <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+                <div class="hidden sm:block"></div>
+                <div class="flex flex-row items-center justify-end gap-2">
+                    <div class="relative items-center inline-flex" data-hs-dropdown-placement="bottom-right">
+                        <button id="hs-dropdown-with-header" type="button"
+                            class="hs-dropdown-toggle inline-flex justify-center items-center gap-2 w-[2.375rem] h-[2.375rem] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800 dark:focus:ring-slate-700 dark:focus:ring-offset-gray-800">
+                            <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
+                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                                alt="Image Description">
+                        </button>
+                        <div
+                            class="absolute right-0 top-full mt-2 z-50 transition-[opacity,margin] duration opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700">
+                            <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Connecté en tant que</p>
+                                <p class="text-sm font-medium text-gray-800 dark:text-gray-300">admin@solicode.co</p>
+                            </div>
+                            <div class="mt-2 py-2 first:pt-0 last:pb-0">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100"
+                                    href="#">Mon Profil</a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-600 hover:bg-gray-100"
+                                    href="../index.html">Se déconnecter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content" role="main" class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72 h-screen">
+
+        <!-- Table Section -->
+        <div class="flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+                <div class="p-1.5 min-w-full inline-block align-middle">
+                    <div
+                        class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+                        <!-- Header -->
+                        <div
+                            class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+                            <div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Articles</h2>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Gérez, publiez et modérez le
+                                    contenu.</p>
+                            </div>
+                            <div>
+                                <div class="inline-flex gap-x-2">
+                                    <div class="max-w-xs">
+                                        <label for="hs-as-table-product-review-search"
+                                            class="sr-only">Rechercher</label>
+                                        <div class="relative">
+                                            <input type="text" name="hs-as-table-product-review-search"
+                                                id="hs-as-table-product-review-search"
+                                                class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                placeholder="Rechercher par titre">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
+                                                <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="max-w-[150px]">
+                                        <select
+                                            class="py-2 px-3 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                            <option selected>Toutes catégories</option>
+                                            <option>Laravel</option>
+                                            <option>PHP</option>
+                                            <option>Mobile</option>
+                                        </select>
+                                    </div>
+                                    <div class="max-w-[120px]">
+                                        <select
+                                            class="py-2 px-3 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                            <option selected>Tous statuts</option>
+                                            <option>Publié</option>
+                                            <option>Brouillon</option>
+                                            <option>Archivé</option>
+                                        </select>
+                                    </div>
+                                    <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        href="form.html">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                        Nouveau
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table -->
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-slate-800">
+                                <tr>
+                                    <th scope="col" class="pl-6 py-3 text-left w-12">
+                                        <input type="checkbox"
+                                            class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700">
+                                    </th>
+                                    <th scope="col" class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3 text-left">
+                                        <span
+                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Article</span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <span
+                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Auteur</span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <span
+                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Catégorie</span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <span
+                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Statut</span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <span
+                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Date</span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-right">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <!-- Item 1 -->
+                                <tr>
+                                    <td class="h-px w-px whitespace-nowrap pl-6 py-3">
+                                        <input type="checkbox"
+                                            class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700">
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap">
+                                        <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                                            <div class="flex items-center gap-x-3">
+                                                <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-md"
+                                                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                                    alt="Cover">
+                                                <div class="grow">
+                                                    <span
+                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Introduction
+                                                        à Laravel 10</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <div class="flex items-center gap-x-2">
+                                            <img class="inline-block h-6 w-6 rounded-full"
+                                                src="https://images.unsplash.com/photo-1531927557220-a9e23c1be048?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+                                                alt="Avatar">
+                                            <span class="text-sm text-gray-600 dark:text-gray-400">Sarah J.</span>
+                                        </div>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-lg text-xs font-medium bg-gray-100 text-gray-800 dark:bg-white/10 dark:text-white">Backend</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Publié</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">12 Déc 2025</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-1.5 text-right">
+                                        <button type="button"
+                                            class="text-blue-600 hover:text-blue-800 text-sm font-medium mr-3">Éditer</button>
+                                        <button type="button"
+                                            class="text-red-600 hover:text-red-800 text-sm font-medium">Supprimer</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Item 2 -->
+                                <tr>
+                                    <td class="h-px w-px whitespace-nowrap pl-6 py-3">
+                                        <input type="checkbox"
+                                            class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700">
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap">
+                                        <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                                            <div class="flex items-center gap-x-3">
+                                                <div
+                                                    class="flex items-center justify-center w-[2.375rem] h-[2.375rem] bg-gray-100 rounded-md dark:bg-slate-700">
+                                                    <i data-lucide="image" class="w-5 h-5 text-gray-400"></i>
+                                                </div>
+                                                <div class="grow">
+                                                    <span
+                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Les
+                                                        bases de Jetpack Compose</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <div class="flex items-center gap-x-2">
+                                            <span
+                                                class="inline-block w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs text-blue-600 font-bold">JD</span>
+                                            <span class="text-sm text-gray-600 dark:text-gray-400">John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-lg text-xs font-medium bg-gray-100 text-gray-800 dark:bg-white/10 dark:text-white">Mobile</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">Brouillon</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">10 Déc 2025</span>
+                                    </td>
+                                    <td class="h-px w-px whitespace-nowrap px-6 py-1.5 text-right">
+                                        <button type="button"
+                                            class="text-blue-600 hover:text-blue-800 text-sm font-medium mr-3">Éditer</button>
+                                        <button type="button"
+                                            class="text-red-600 hover:text-red-800 text-sm font-medium">Supprimer</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Footer -->
+                        <div
+                            class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+                            <div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold text-gray-800 dark:text-gray-200">2</span> résultats
+                                </p>
+                            </div>
+                            <div>
+                                <div class="inline-flex gap-x-2">
+                                    <button type="button"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">Précédent</button>
+                                    <button type="button"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">Suivant</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <script>
+        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggle = document.getElementById('hs-dropdown-with-header');
+            if (dropdownToggle) {
+                const dropdownMenu = dropdownToggle.nextElementSibling;
+                dropdownToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    dropdownMenu.classList.toggle('opacity-0');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdownToggle.contains(e.target)) {
+                        dropdownMenu.classList.add('hidden');
+                        dropdownMenu.classList.add('opacity-0');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
