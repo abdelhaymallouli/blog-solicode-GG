@@ -1,7 +1,8 @@
 # Ensemble des tâches à faire
 
 ## Fonctionnalités
-* Création de la base de données
+* Rechercher des articles
+* Filtrer par Catégorie
 
 ## Labs
 * PHP Naming Conventions
