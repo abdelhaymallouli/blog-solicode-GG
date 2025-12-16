@@ -1,6 +1,6 @@
-title,slug,content,image,status,view_count,is_featured,created_at,updated_at,author_email,category_slug
-,No Title,,/images/missing.jpg,published,100,1,2023-06-01,2023-06-01,john@example.com,technology
-Invalid Status,invalid-status,"Content here.",/images/invalid.jpg,invalid,50,0,2023-06-02,2023-06-02,jane@example.com,technology
-Negative Views,negative-views,"Test content.",/images/neg.jpg,published,-10,0,2023-06-03,2023-06-03,alice@example.com,health
-Unknown Author,unknown-author,"Author unknown.",/images/unk.jpg,published,20,0,2023-06-04,2023-06-04,unknown@example.com,health
-Unknown Category,unknown-category,"Category unknown.",/images/unkcat.jpg,published,30,0,2023-06-05,2023-06-05,charlie@example.com,unknown
+title,slug,content,image,status,view_count,is_featured,created_at,updated_at,author_email
+,No Title,,/images/missing.jpg,published,100,1,2023-06-01,2023-06-01,john@example.com
+Invalid Status,invalid-status,"Content here.",/images/invalid.jpg,invalid,50,0,2023-06-02,2023-06-02,jane@example.com
+Negative Views,negative-views,"Test content.",/images/neg.jpg,published,-10,0,2023-06-03,2023-06-03,alice@example.com
+Unknown Author,unknown-author,"Author unknown.",/images/unk.jpg,published,20,0,2023-06-04,2023-06-04,unknown@example.com
+Duplicate Slug,intro-to-ai,"Duplicate test.",/images/dup.jpg,published,30,0,2023-06-05,2023-06-05,charlie@example.com
