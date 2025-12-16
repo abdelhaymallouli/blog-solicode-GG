@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoliCode Blog - Édition Article</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { 600: '#2563eb', 700: '#1d4ed8' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hs-accordion.hs-accordion-active .hs-accordion-content {
+            display: block !important;
+        }
+
+        .hs-dropdown.hs-dropdown-open .hs-dropdown-menu {
+            display: block !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-900">
+
+    <!-- Sidebar -->
+    <div id="application-sidebar"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-slate-900 dark:border-gray-700">
+        <div class="px-6">
+            <a class="flex items-center gap-x-2 text-xl font-bold dark:text-white" href="#" aria-label="Brand">
+                <div class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <span>Solicode<span class="text-blue-600">Blog</span></span>
+            </a>
+        </div>
+
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+            <ul class="space-y-1.5 flex flex-col h-full">
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../dashboard-admin.html">
+                        <i data-lucide="layout-dashboard" class="w-[18px] h-[18px]"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="my-4 border-t border-gray-100 dark:border-gray-800"></li>
+                <li class="mb-2 px-3 text-[10px] uppercase tracking-widest text-gray-400 font-bold font-heading">Contenu
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 bg-blue-50 text-sm font-medium text-blue-600 rounded-lg dark:bg-blue-900/50 dark:text-blue-400 focus:outline-none"
+                        href="index.html">
+                        <i data-lucide="file-text" class="w-[18px] h-[18px]"></i>
+                        Articles
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../categories/index.html">
+                        <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
+                        Catégories
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+                        href="../tags/index.html">
+                        <i data-lucide="tag" class="w-[18px] h-[18px]"></i>
+                        Tags
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 dark:bg-slate-900 dark:border-gray-700">
+        <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+            <div class="mr-5 lg:mr-0 lg:hidden">
+                <a class="flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="#" aria-label="Brand">
+                    <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </span>
+                    <span>Solicode<span class="text-blue-600">Blog</span></span>
+                </a>
+            </div>
+            <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+                <div class="hidden sm:block"></div>
+                <div class="flex flex-row items-center justify-end gap-2">
+                    <div class="relative items-center inline-flex" data-hs-dropdown-placement="bottom-right">
+                        <button id="hs-dropdown-with-header" type="button"
+                            class="hs-dropdown-toggle inline-flex justify-center items-center gap-2 w-[2.375rem] h-[2.375rem] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800 dark:focus:ring-slate-700 dark:focus:ring-offset-gray-800">
+                            <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
+                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                                alt="Image Description">
+                        </button>
+                        <div
+                            class="absolute right-0 top-full mt-2 z-50 transition-[opacity,margin] duration opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700">
+                            <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Connecté en tant que</p>
+                                <p class="text-sm font-medium text-gray-800 dark:text-gray-300">admin@solicode.co</p>
+                            </div>
+                            <div class="mt-2 py-2 first:pt-0 last:pb-0">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100"
+                                    href="#">Mon Profil</a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-600 hover:bg-gray-100"
+                                    href="../index.html">Se déconnecter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content" role="main" class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72 h-screen">
+
+        <div class="mb-5 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Créer un article</h1>
+        </div>
+
+        <form>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left Column: Content -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Title & Slug -->
+                    <div
+                        class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="title" class="block text-sm font-medium mb-2 dark:text-white">Titre</label>
+                                <input type="text" id="title"
+                                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                    placeholder="Ex: Les secrets de Laravel..." required>
+                            </div>
+                            <div>
+                                <label for="slug" class="block text-sm font-medium mb-2 dark:text-white">Slug
+                                    (URL)</label>
+                                <input type="text" id="slug"
+                                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm bg-gray-50 text-gray-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-400"
+                                    placeholder="les-secrets-de-laravel" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rich Editor -->
+                    <div
+                        class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-2 dark:text-white">Contenu</label>
+                        <div class="border border-gray-200 rounded-xl overflow-hidden dark:border-gray-700">
+                            <!-- Toolbar -->
+                            <div
+                                class="flex items-center gap-x-1 p-2 border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-slate-800">
+                                <button type="button"
+                                    class="p-2 inline-flex justify-center items-center gap-x-2 rounded-lg hover:bg-white text-gray-800 shadow-sm hover:shadow dark:text-gray-200 dark:hover:bg-slate-700 focus:outline-none">
+                                    <i data-lucide="bold" class="w-4 h-4"></i>
+                                </button>
+                                <button type="button"
+                                    class="p-2 inline-flex justify-center items-center gap-x-2 rounded-lg hover:bg-white text-gray-800 shadow-sm hover:shadow dark:text-gray-200 dark:hover:bg-slate-700 focus:outline-none">
+                                    <i data-lucide="italic" class="w-4 h-4"></i>
+                                </button>
+                                <div class="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+                                <button type="button"
+                                    class="p-2 inline-flex justify-center items-center gap-x-2 rounded-lg hover:bg-white text-gray-800 shadow-sm hover:shadow dark:text-gray-200 dark:hover:bg-slate-700 focus:outline-none">
+                                    <i data-lucide="list" class="w-4 h-4"></i>
+                                </button>
+                                <button type="button"
+                                    class="p-2 inline-flex justify-center items-center gap-x-2 rounded-lg hover:bg-white text-gray-800 shadow-sm hover:shadow dark:text-gray-200 dark:hover:bg-slate-700 focus:outline-none">
+                                    <i data-lucide="link" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="p-4 h-80 overflow-y-auto" contenteditable="true">
+                                <p class="text-gray-800 dark:text-gray-200">Commencez à rédiger ici...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Settings -->
+                <div class="space-y-6">
+
+                    <!-- Publish Status -->
+                    <div
+                        class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <h3 class="font-semibold text-gray-800 dark:text-white mb-4">Publication</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 dark:text-white">Statut</label>
+                                <select
+                                    class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                    <option>Brouillon</option>
+                                    <option>Publié</option>
+                                    <option>Archivé</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="is_featured" class="text-sm text-gray-500 dark:text-gray-400">À la une
+                                    ?</label>
+                                <input type="checkbox" id="is_featured"
+                                    class="relative w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-blue-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 ring-1 ring-transparent focus:border-blue-600 focus:ring-blue-600 ring-offset-white focus:outline-none appearance-none dark:bg-slate-700 dark:checked:bg-blue-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-slate-400 dark:checked:before:bg-blue-200">
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                Enregistrer
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category & Tags -->
+                    <div
+                        class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <h3 class="font-semibold text-gray-800 dark:text-white mb-4">Taxonomie</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 dark:text-white">Catégorie</label>
+                                <select
+                                    class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                    <option selected>Sélectionner...</option>
+                                    <option>Backend / Laravel</option>
+                                    <option>Mobile / Android</option>
+                                    <option>Frontend</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 dark:text-white">Tags</label>
+                                <input type="text"
+                                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                                    placeholder="Ex: php, tuto (séparés par virgule)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div
+                        class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <h3 class="font-semibold text-gray-800 dark:text-white mb-4">Image de couverture</h3>
+                        <label for="dropzone-file"
+                            class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-800 dark:bg-slate-800 dark:border-gray-600 dark:hover:border-gray-500 transition-colors">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <i data-lucide="cloud-upload" class="w-8 h-8 mb-3 text-gray-400"></i>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        class="font-semibold">Cliquer pour upload</span></p>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" />
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <script>
+        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggle = document.getElementById('hs-dropdown-with-header');
+            if (dropdownToggle) {
+                const dropdownMenu = dropdownToggle.nextElementSibling;
+                dropdownToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    dropdownMenu.classList.toggle('opacity-0');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdownToggle.contains(e.target)) {
+                        dropdownMenu.classList.add('hidden');
+                        dropdownMenu.classList.add('opacity-0');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
