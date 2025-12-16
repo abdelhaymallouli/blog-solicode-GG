@@ -1,4 +1,4 @@
-# Compte rendu – Améliorations apportées 
+## Compte rendu – Améliorations apportées 
 
 ## 1. Partie Administration – Gestion des Articles
  
