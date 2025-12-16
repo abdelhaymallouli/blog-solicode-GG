@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+actor "Visiteur" as Guest
+package "Page articles" {
+usecase "Rechercher des articles" as UC_Search
+usecase "Filtrer par Catégorie" as UC_Filter
+}
+' Relations
+Guest -- UC_Search
+Guest -- UC_Filter
+' Extensions
+UC_Filter .> UC_Search : <<extend>>
+@enduml
