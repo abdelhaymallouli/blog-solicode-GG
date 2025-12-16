@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -11,11 +10,11 @@ use Illuminate\Support\Str;
 class ArticleSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed articles from CSV, resolving user_id from email.
+     * Idempotent via unique slug.
      */
     public function run(): void
     {
-        // Path to the CSV file
         $path = database_path('seeders/data/articles_test.csv');
 
         if (!file_exists($path)) {
@@ -26,41 +25,45 @@ class ArticleSeeder extends Seeder
         $headers = fgetcsv($file); // Skip headers
 
         while (($row = fgetcsv($file)) !== false) {
-            [$title, $slug, $content, $image, $status, $view_count, $is_featured, $created_at, $updated_at, $author_email, $category_slug] = $row;
+            [
+                $title,
+                $slug,
+                $content,
+                $image,
+                $status,
+                $view_count,
+                $is_featured,
+                $created_at,
+                $updated_at,
+                $author_email,
+                // category_slug column is ignored – no category relationship exists in current migration
+            ] = $row;
 
-            // Generate slug if missing
-            if (empty($slug)) {
-                $slug = Str::slug($title);
-            }
+            // Generate slug if missing (fallback for invalid data)
+            $slug = $slug ?: Str::slug($title);
 
-            // Resolve author_id from author_email
+            // Resolve author (user_id)
             $author = User::where('email', $author_email)->first();
             if (!$author) {
-                continue; // Skip if author not found
+                continue; // Skip rows with unknown author
             }
-            $author_id = $author->id;
 
-            // Resolve category_id from category_slug
-            $category = Category::where('slug', $category_slug)->first();
-            if (!$category) {
-                continue; // Skip if category not found
-            }
-            $category_id = $category->id;
+            // Map status to allowed enum values – invalid ones will be corrected to default
+            $validStatuses = ['draft', 'published', 'archived'];
+            $status = in_array($status, $validStatuses) ? $status : 'draft';
 
-            // Use updateOrInsert to make it idempotent, keying on unique slug
             DB::table('articles')->updateOrInsert(
-                ['slug' => $slug],
+                ['slug' => $slug], // Unique constraint
                 [
-                    'title' => $title,
-                    'content' => $content,
-                    'image' => $image,
-                    'status' => $status,
-                    'view_count' => (int) $view_count,
+                    'title'       => $title,
+                    'content'     => $content,
+                    'image'       => $image ?: null,
+                    'status'      => $status,
+                    'view_count'  => max(0, (int) $view_count), // Prevent negative values
                     'is_featured' => (bool) $is_featured,
-                    'author_id' => $author_id,
-                    'category_id' => $category_id,
-                    'created_at' => $created_at,
-                    'updated_at' => now(),
+                    'user_id'     => $author->id,
+                    'created_at'  => $created_at,
+                    'updated_at'  => now(),
                 ]
             );
         }

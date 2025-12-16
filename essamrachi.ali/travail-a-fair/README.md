@@ -1,11 +1,46 @@
-## Travail à faire : 
+## Travail à faire
 
-« Jeux de test CSV » (ou jeu de données de test au format CSV) désigne un fichier CSV contenant des données fictives ou contrôlées utilisées pour tester une application, une fonctionnalité ou une base de données.
+---
 
-## Labs : 
+### Labs
 - Ajax
 
-## Les fonctionnalités : 
+---
 
+### Les fonctionnalités
+- Articles avec commentaires (Comments)
 
-## Test maquettes : 
+---
+
+### Maquettes
+- Page détail article avec commentaires
+
+---
+
+### Test maquettes
+- M. Hamouda (admin)
+
+---
+
+### Réalisation
+
+1. **Créer les fichiers CSV de test** dans `database/seeders/data/` :
+   - `users_test.csv`
+   - `roles_test.csv`
+   - `categories_test.csv`
+   - `tags_test.csv`
+   - `articles_test.csv`
+   - `articles_invalid_test.csv`
+   - `comments_test.csv`
+   - `comments_invalid_test.csv`
+   - `article_tag_test.csv`
+
+2. **Créer les Seeders avec Artisan** :
+   ```bash
+   php artisan make:seeder RoleSeeder
+   php artisan make:seeder CategorySeeder
+   php artisan make:seeder TagSeeder
+   php artisan make:seeder ArticleSeeder
+   php artisan make:seeder CommentSeeder
+   php artisan make:seeder PivotSeeder
+````
