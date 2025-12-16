@@ -1,4 +1,4 @@
-@startuml hi
+@startuml
 left to right direction
 actor "Visiteur" as Guest
 actor "Membre" as Member
