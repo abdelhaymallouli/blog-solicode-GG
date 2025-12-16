@@ -7,4 +7,4 @@
 - Dashboard dédié aux auteurs 
 
 ## Validation & tests
-- Tests des maquettes réalisés par : Fatine
+- Tests des maquettes réalisés par : Formateur Fatine
