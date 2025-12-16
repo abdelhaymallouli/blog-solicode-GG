@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class CommentSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Path to the CSV file
         $path = database_path('seeders/data/comments_test.csv');
 
         if (!file_exists($path)) {
@@ -22,36 +18,58 @@ class CommentSeeder extends Seeder
         }
 
         $file = fopen($path, 'r');
-        $headers = fgetcsv($file); // Skip headers
+        fgetcsv($file); // Skip headers
+
+        $allowedStatuses = ['pending', 'approved', 'rejected'];
 
         while (($row = fgetcsv($file)) !== false) {
-            [$content, $status, $created_at, $updated_at, $author_email, $article_slug] = $row;
 
-            // Resolve author_id from author_email
-            $author = User::where('email', $author_email)->first();
-            if (!$author) {
-                continue; // Skip if author not found
+            [
+                $content,
+                $status,
+                $created_at,
+                $updated_at,
+                $author_email,
+                $article_slug
+            ] = $row;
+
+            // ❌ Skip invalid content
+            if (empty($content)) {
+                continue;
             }
-            $author_id = $author->id;
+
+            // ❌ Skip invalid status
+            if (!in_array($status, $allowedStatuses)) {
+                continue;
+            }
+
+            // Resolve user_id from author_email
+            $user = User::where('email', $author_email)->first();
+            if (!$user) {
+                continue;
+            }
 
             // Resolve article_id from article_slug
             $article = Article::where('slug', $article_slug)->first();
             if (!$article) {
-                continue; // Skip if article not found
+                continue;
             }
-            $article_id = $article->id;
 
-            // Use updateOrInsert to make it idempotent, keying on content, author_id, article_id (assuming uniqueness)
+            // Default dates if missing
+            $createdAt = $created_at ?: now();
+            $updatedAt = $updated_at ?: now();
+
+            // Idempotent insert
             DB::table('comments')->updateOrInsert(
                 [
-                    'content' => $content,
-                    'author_id' => $author_id,
-                    'article_id' => $article_id,
+                    'content'    => $content,
+                    'user_id'    => $user->id,
+                    'article_id' => $article->id,
                 ],
                 [
-                    'status' => $status,
-                    'created_at' => $created_at,
-                    'updated_at' => now(),
+                    'status'     => $status,
+                    'created_at'=> $createdAt,
+                    'updated_at'=> $updatedAt,
                 ]
             );
         }

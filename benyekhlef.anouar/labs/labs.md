@@ -1,1 +1,0 @@
-# PHP Naming Conventions
