@@ -2,7 +2,7 @@
 
 
 ## Labs :
-- Class en Deux Fichier
+- (Trait) Class en Deux Fichier
 
 ## Fonctionnalité :
 - Dachboard (admin) 
