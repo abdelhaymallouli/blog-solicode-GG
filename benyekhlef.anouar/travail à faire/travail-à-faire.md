@@ -1,3 +1,4 @@
-# L'ensemble des taches a faire
+# Ensemble des tâches à faire
 
-## Creation de base de donnnes 
+## 1. Création de la base de données
+
