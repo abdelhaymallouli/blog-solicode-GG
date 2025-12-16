@@ -5,7 +5,7 @@
 - (Trait) Class en Deux Fichier
 
 ## Fonctionnalité :
-- Dachboard (admin) 
+- Dashboard (admin) 
 
 ## Test Maquette :
 - Admin : Hamouda 
