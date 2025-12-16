@@ -1,22 +1,13 @@
-# 📘 Blog Solicode – Travail à faire
+# Travail à faire :
 
-## 🎯 Objectif du projet
+## Fonctionnalité :
 
-Créer la **page detail Article** du projet **Blog Solicode** en utilisant **Laravel Blade**.
+- Page Article Details
 
----
+## Labs :
 
-## 🧩 Travail à faire
+- Ajax
 
-###  Création de la page Accueil
+## Test Maquette :
 
-* Créer un fichier Blade :
-
-  ```bash
-  resources/views/home.blade.php
-  ```
-* Cette page sera la page de detail d'un article.
-
----
-
-### test maquete 
+- Admin : Hamouda
