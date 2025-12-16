@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class CommentSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
+        // Path to the CSV file
         $path = database_path('seeders/data/comments_test.csv');
 
         if (!file_exists($path)) {
@@ -18,58 +22,36 @@ class CommentSeeder extends Seeder
         }
 
         $file = fopen($path, 'r');
-        fgetcsv($file); // Skip headers
-
-        $allowedStatuses = ['pending', 'approved', 'rejected'];
+        $headers = fgetcsv($file); // Skip headers
 
         while (($row = fgetcsv($file)) !== false) {
+            [$content, $status, $created_at, $updated_at, $author_email, $article_slug] = $row;
 
-            [
-                $content,
-                $status,
-                $created_at,
-                $updated_at,
-                $author_email,
-                $article_slug
-            ] = $row;
-
-            // ❌ Skip invalid content
-            if (empty($content)) {
-                continue;
+            // Resolve author_id from author_email
+            $author = User::where('email', $author_email)->first();
+            if (!$author) {
+                continue; // Skip if author not found
             }
-
-            // ❌ Skip invalid status
-            if (!in_array($status, $allowedStatuses)) {
-                continue;
-            }
-
-            // Resolve user_id from author_email
-            $user = User::where('email', $author_email)->first();
-            if (!$user) {
-                continue;
-            }
+            $author_id = $author->id;
 
             // Resolve article_id from article_slug
             $article = Article::where('slug', $article_slug)->first();
             if (!$article) {
-                continue;
+                continue; // Skip if article not found
             }
+            $article_id = $article->id;
 
-            // Default dates if missing
-            $createdAt = $created_at ?: now();
-            $updatedAt = $updated_at ?: now();
-
-            // Idempotent insert
+            // Use updateOrInsert to make it idempotent, keying on content, author_id, article_id (assuming uniqueness)
             DB::table('comments')->updateOrInsert(
                 [
-                    'content'    => $content,
-                    'user_id'    => $user->id,
-                    'article_id' => $article->id,
+                    'content' => $content,
+                    'author_id' => $author_id,
+                    'article_id' => $article_id,
                 ],
                 [
-                    'status'     => $status,
-                    'created_at'=> $createdAt,
-                    'updated_at'=> $updatedAt,
+                    'status' => $status,
+                    'created_at' => $created_at,
+                    'updated_at' => now(),
                 ]
             );
         }
