@@ -1,0 +1,6 @@
+name,slug,description,image,created_at,updated_at
+Technology,technology,Tech news and updates,/images/tech.jpg,2023-01-01,2023-01-01
+Health,health,Health and wellness tips,/images/health.jpg,2023-01-01,2023-01-01
+Travel,travel,Travel stories and guides,/images/travel.jpg,2023-01-01,2023-01-01
+Food,food,Recipes and food reviews,/images/food.jpg,2023-01-01,2023-01-01
+Science,science,Scientific discoveries,/images/science.jpg,2023-01-01,2023-01-01
