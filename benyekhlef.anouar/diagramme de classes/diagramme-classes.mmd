@@ -1,0 +1,67 @@
+classDiagram
+    class User {
+        +Long id
+        +String name
+        +String email
+        +String password
+        +String avatar
+        +String bio
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    class Role {
+        +Long id
+        +String name
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    class Article {
+        +Long id
+        +String title
+        +String slug
+        +Text content
+        +String image
+        +Enum status
+        +Integer view_count
+        +Boolean is_featured
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    class Category {
+        +Long id
+        +String name
+        +String slug
+        +String description
+        +String image
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    class Tag {
+        +Long id
+        +String name
+        +String slug
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    class Comment {
+        +Long id
+        +Text content
+        +Enum status
+        +DateTime created_at
+        +DateTime updated_at
+    }
+
+    %% Relations
+    User "1" -- "0..*" Article : writes
+    User "1" -- "0..*" Comment : posts
+    User "*" -- "*" Role : has
+
+    Category "*" -- "*" Article : classifies
+
+    Article "1" -- "0..*" Comment : receives
+    Article "*" -- "*" Tag : labeled_with

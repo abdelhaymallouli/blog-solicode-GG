@@ -1,0 +1,16 @@
+content,status,created_at,updated_at,author_email,article_slug
+"Great article!",approved,2023-07-01,2023-07-01,jane@example.com,intro-to-ai
+"Interesting read.",approved,2023-07-02,2023-07-02,alice@example.com,ml-basics
+"Helpful tips.",pending,2023-07-03,2023-07-03,bob@example.com,fitness-tips
+"Love this!",approved,2023-07-04,2023-07-04,charlie@example.com,healthy-eating
+"More details please.",rejected,2023-07-05,2023-07-05,john@example.com,travel-to-europe
+"Awesome!",approved,2023-07-06,2023-07-06,jane@example.com,asian-adventures
+"Good recipe.",approved,2023-07-07,2023-07-07,alice@example.com,easy-recipes
+"Try this.",pending,2023-07-08,2023-07-08,bob@example.com,gourmet-dishes
+"Fascinating.",approved,2023-07-09,2023-07-09,charlie@example.com,quantum-physics
+"Informative.",approved,2023-07-10,2023-07-10,john@example.com,biology-basics
+"Ethical concerns.",rejected,2023-07-11,2023-07-11,jane@example.com,ai-ethics
+"Useful hacks.",approved,2023-07-12,2023-07-12,alice@example.com,travel-hacks
+"Agree completely.",approved,2023-07-13,2023-07-13,bob@example.com,intro-to-ai
+"More examples.",pending,2023-07-14,2023-07-14,charlie@example.com,ml-basics
+"Nice post.",approved,2023-07-15,2023-07-15,john@example.com,fitness-tips
