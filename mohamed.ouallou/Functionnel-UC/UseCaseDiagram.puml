@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+actor "Visiteur" as Guest
+actor "Membre" as Member
+
+Guest <|-- Member
+
+package "Espace Interaction (Membre)" {
+  usecase "Se connecter" as UC_Login
+  usecase "S'inscrire" as UC_Register
+  usecase "Lire les commentaires" as UC_ReadComments
+  usecase "Poster un commentaire" as UC_PostComment
+  usecase "Lire un article" as UC_Read
+}
+
+' Relations Visiteur
+Guest -- UC_Login
+Guest -- UC_Register
+
+' Relations Membre
+Member -- UC_PostComment
+
+' Extensions et Inclusions
+UC_ReadComments .> UC_Read : <<extend>>
+UC_PostComment .> UC_Read : <<extend>>
+UC_PostComment ..> UC_Login : <<include>>
+
+@enduml
