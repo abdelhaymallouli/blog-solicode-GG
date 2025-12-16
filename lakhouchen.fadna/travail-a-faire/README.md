@@ -1,10 +1,10 @@
 # travail à faire
 
 ## Labs
- -Ajax
+- Ajax
 
-## Les fonctionnalites
- -developper Page Dashboard Auteur 
+## Fonctionnalités à développer
+- Dashboard dédié aux auteurs 
 
-## Test maquettes
- -Fatine
+## Validation & tests
+- Tests des maquettes réalisés par : Fatine
