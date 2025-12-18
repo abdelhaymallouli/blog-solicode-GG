@@ -1,0 +1,15 @@
+title,slug,content,image,status,view_count,is_featured,created_at,updated_at,author_email
+Intro to AI,intro-to-ai,"Artificial intelligence basics.",/images/ai.jpg,published,100,1,2023-06-01,2023-06-01,john@example.com
+ML Basics,ml-basics,"Machine learning fundamentals.",/images/ml.jpg,published,50,0,2023-06-02,2023-06-02,jane@example.com
+Fitness Tips,fitness-tips,"Daily fitness routines.",/images/fitness.jpg,published,200,1,2023-06-03,2023-06-03,alice@example.com
+Healthy Eating,healthy-eating,"Nutrition guide.",/images/nutrition.jpg,draft,10,0,2023-06-04,2023-06-04,bob@example.com
+Travel to Europe,travel-to-europe,"European travel itinerary.",/images/europe.jpg,published,30,0,2023-06-05,2023-06-05,charlie@example.com
+Asian Adventures,asian-adventures,"Asia exploration.",/images/asia.jpg,published,150,1,2023-06-06,2023-06-06,john@example.com
+Easy Recipes,easy-recipes,"Simple cooking recipes.",/images/recipes.jpg,published,80,0,2023-06-07,2023-06-07,jane@example.com
+Gourmet Dishes,gourmet-dishes,"Advanced cooking.",/images/gourmet.jpg,draft,20,0,2023-06-08,2023-06-08,alice@example.com
+Quantum Physics,quantum-physics,"Quantum mechanics intro.",/images/quantum.jpg,published,120,1,2023-06-09,2023-06-09,bob@example.com
+Biology Basics,biology-basics,"Cell biology.",/images/biology.jpg,archived,40,0,2023-06-10,2023-06-10,charlie@example.com
+AI Ethics,ai-ethics,"Ethics in AI.",/images/ethics.jpg,published,90,0,2023-06-11,2023-06-11,john@example.com
+Travel Hacks,travel-hacks,"Tips for travelers.",/images/hacks.jpg,published,60,1,2023-06-12,2023-06-12,jane@example.com
+Neural Networks Deep Dive,neural-networks-deep-dive,"Advanced neural network concepts.",/images/nn.jpg,published,170,1,2023-06-13,2023-06-13,alice@example.com
+Sustainable Living,sustainable-living,"Eco-friendly habits.",/images/eco.jpg,draft,15,0,2023-06-14,2023-06-14,bob@example.com

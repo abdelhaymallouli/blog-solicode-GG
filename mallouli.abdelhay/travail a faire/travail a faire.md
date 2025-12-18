@@ -2,10 +2,10 @@
 
 
 ## Labs :
-- (Trait) Class en Deux Fichier
+- Bransh Roles 
 
 ## Fonctionnalité :
-- Dashboard (admin) 
+- Page Accueil  
 
 ## Test Maquette :
-- Hamouda (Admin)
+- Admin : Hamouda 
