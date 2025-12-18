@@ -10,9 +10,7 @@ class CategoryService
 {
     use BaseServiceTrait;
 
-    /**
-     * Get all categories with article count
-     */
+
     public function getAll(): Collection
     {
         $query = Category::query()->withCount([

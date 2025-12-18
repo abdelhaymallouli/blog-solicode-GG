@@ -10,9 +10,7 @@ class TagService
 {
     use BaseServiceTrait;
 
-    /**
-     * Get all tags
-     */
+
     public function getAll(): Collection
     {
         $query = Tag::query();
