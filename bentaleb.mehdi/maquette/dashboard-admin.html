@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoliCode Blog - Dashboard Admin</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { 600: '#2563eb', 700: '#1d4ed8' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Fix for Preline Accordion/Dropdown with Tailwind CDN */
+        .hs-accordion.hs-accordion-active .hs-accordion-content {
+            display: block !important;
+        }
+
+        .hs-dropdown.hs-dropdown-open .hs-dropdown-menu {
+            display: block !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-900">
+
+    <!-- Sidebar -->
+    <div id="application-sidebar"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-slate-900 dark:border-gray-700">
+        <div class="px-6">
+            <a class="flex items-center gap-x-2 text-xl font-bold dark:text-white" href="#" aria-label="Brand">
+                <div class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <span>Solicode<span class="text-blue-600">Blog</span></span>
+            </a>
+        </div>
+
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+            <ul class="space-y-1.5 flex flex-col h-full">
+                <!-- Group 1: Main -->
+                <li>
+                    <a class="flex items-center gap-x-3 py-2.5 px-3 bg-blue-50 text-sm font-medium text-blue-600 rounded-lg dark:bg-blue-900/50 dark:text-blue-400 focus:outline-none"
+                        href="dashboard-admin.html">
+                        <i data-lucide="layout-dashboard" class="w-[18px] h-[18px]"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+
+               
+
+            </ul>
+        </nav>
+    </div>
+    <!-- End Sidebar -->
+
+    <!-- Navbar -->
+    <header
+        class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48]  w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 dark:bg-slate-900 dark:border-gray-700">
+        <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+            <div class="mr-5 lg:mr-0 lg:hidden">
+                <a class="flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="#" aria-label="Brand">
+                    <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </span>
+                    <span>Solicode<span class="text-blue-600">Blog</span></span>
+                </a>
+            </div>
+
+            
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content" role="main" class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
+
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard Admin</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Vue d'ensemble et statistiques de la plateforme.</p>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <!-- Articles -->
+            <div
+                class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 dark:bg-slate-900 dark:border-gray-700">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500">Articles
+                        </h3>
+                        <p class="mt-1 text-3xl font-extrabold text-gray-800 dark:text-gray-200">124</p>
+                    </div>
+                    <div
+                        class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl shadow-lg shadow-blue-500/30 text-white">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-sm">
+                    <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Total publiés</span>
+                </div>
+            </div>
+
+            <!-- Vues -->
+            <div
+                class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 dark:bg-slate-900 dark:border-gray-700">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500">Vues
+                            Totales</h3>
+                        <p class="mt-1 text-3xl font-extrabold text-gray-800 dark:text-gray-200">54.2k</p>
+                    </div>
+                    <div
+                        class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl shadow-lg shadow-emerald-500/30 text-white">
+                        <i data-lucide="eye" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center gap-x-1.5">
+                    <span
+                        class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-800/30 dark:text-emerald-500 text-xs font-bold">
+                        <i data-lucide="trending-up" class="w-3 h-3"></i> +12%
+                    </span>
+                    <span class="text-xs text-gray-400">ce mois-ci</span>
+                </div>
+            </div>
+
+            <!-- Utilisateurs -->
+            <div
+                class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 dark:bg-slate-900 dark:border-gray-700">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                            Utilisateurs</h3>
+                        <p class="mt-1 text-3xl font-extrabold text-gray-800 dark:text-gray-200">8</p>
+                    </div>
+                    <div
+                        class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-400 to-fuchsia-500 rounded-2xl shadow-lg shadow-purple-500/30 text-white">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-sm">
+                    <span
+                        class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-gray-100 text-gray-800 dark:bg-white/10 dark:text-white text-xs font-medium">
+                        2 Admins
+                    </span>
+                    <span class="ml-2 text-xs text-gray-400">6 Auteurs</span>
+                </div>
+            </div>
+
+            <!-- Commentaires -->
+            <div
+                class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 dark:bg-slate-900 dark:border-gray-700">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                            Commentaires</h3>
+                        <p class="mt-1 text-3xl font-extrabold text-gray-800 dark:text-gray-200">312</p>
+                    </div>
+                    <div
+                        class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-lg shadow-orange-500/30 text-white">
+                        <i data-lucide="message-square" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center gap-x-1.5">
+                    <span
+                        class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-orange-100 text-orange-800 dark:bg-orange-800/30 dark:text-orange-500 text-xs font-bold">
+                        2 nouveaux
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+            <!-- Recent Articles Table -->
+            <div class="col-span-1 lg:col-span-2">
+                <div
+                    class="flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700">
+                    <div
+                        class="px-6 py-4 flex justify-between items-center border-b border-gray-100 dark:border-gray-800">
+                        <h2 class="text-lg font-bold text-gray-800 dark:text-gray-200">Derniers Articles</h2>
+                        <a href="articles/index.html"
+                            class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">Voir
+                            tout</a>
+                    </div>
+                    <div class="p-2 overflow-x-auto">
+                        <table class="min-w-full">
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <tr
+                                    class="group hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg">
+                                    <td class="px-4 py-3 whitespace-nowrap">
+                                        <div class="flex items-center gap-x-3">
+                                            <div
+                                                class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-xl">
+                                                🚀</div>
+                                            <div class="grow">
+                                                <span
+                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Les
+                                                    nouveautés de Laravel 10</span>
+                                                <span class="block text-xs text-gray-500">Par John Doe</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 whitespace-nowrap"><span class="text-xs text-gray-500">23 Avr
+                                            2023</span></td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-end"><span
+                                            class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-600"><span
+                                                class="w-1.5 h-1.5 inline-block rounded-full bg-emerald-600"></span>Publié</span>
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="group hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg">
+                                    <td class="px-4 py-3 whitespace-nowrap">
+                                        <div class="flex items-center gap-x-3">
+                                            <div
+                                                class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-xl">
+                                                🎨</div>
+                                            <div class="grow">
+                                                <span
+                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Intro
+                                                    à Tailwind CSS</span>
+                                                <span class="block text-xs text-gray-500">Par Jane Smith</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 whitespace-nowrap"><span class="text-xs text-gray-500">22 Avr
+                                            2023</span></td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-end"><span
+                                            class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600"><span
+                                                class="w-1.5 h-1.5 inline-block rounded-full bg-gray-500"></span>Brouillon</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity List -->
+            <div class="col-span-1">
+                <div
+                    class="flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 h-full">
+                    <div class="p-4 md:p-5">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Activité Récente</h3>
+                        <div class="flex gap-x-3 mb-4">
+                            <div
+                                class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                <div class="relative z-10 w-7 h-7 flex justify-center items-center">
+                                    <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+                                </div>
+                            </div>
+                            <div class="grow pt-0.5 pb-8">
+                                <h3 class="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white"><i
+                                        data-lucide="file-plus" class="w-4 h-4 text-blue-600 mt-1"></i> Article publié
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Vous avez publié "Les bases de
+                                    PHP".</p>
+                                <span class="text-xs text-gray-500">Il y a 2 min</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-x-3">
+                            <div class="relative last:after:hidden">
+                                <div class="relative z-10 w-7 h-7 flex justify-center items-center">
+                                    <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                </div>
+                            </div>
+                            <div class="grow pt-0.5 pb-0">
+                                <h3 class="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white"><i
+                                        data-lucide="message-circle" class="w-4 h-4 text-green-600 mt-1"></i> Nouveau
+                                    commentaire</h3>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Alice a commenté "Tuto
+                                    Laravel".</p>
+                                <span class="text-xs text-gray-500">Il y a 1 heure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- End Main Content -->
+
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <script>
+        lucide.createIcons();
+        // Dropdown Logic (Inline for simplicity)
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggle = document.getElementById('hs-dropdown-with-header');
+            if (dropdownToggle) {
+                const dropdownMenu = dropdownToggle.nextElementSibling;
+                dropdownToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    dropdownMenu.classList.toggle('opacity-0');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdownToggle.contains(e.target)) {
+                        dropdownMenu.classList.add('hidden');
+                        dropdownMenu.classList.add('opacity-0');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
