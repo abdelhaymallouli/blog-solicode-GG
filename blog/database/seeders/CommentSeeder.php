@@ -25,14 +25,14 @@ class CommentSeeder extends Seeder
         $headers = fgetcsv($file); // Skip headers
 
         while (($row = fgetcsv($file)) !== false) {
-            [$content, $status, $created_at, $updated_at, $author_email, $article_slug] = $row;
+            [$content, $status, $created_at, $updated_at, $user_email, $article_slug] = $row;
 
             // Resolve author_id from author_email
-            $author = User::where('email', $author_email)->first();
+            $author = User::where('email', $user_email)->first();
             if (!$author) {
                 continue; // Skip if author not found
             }
-            $author_id = $author->id;
+            $user_id = $author->id;
 
             // Resolve article_id from article_slug
             $article = Article::where('slug', $article_slug)->first();
@@ -45,7 +45,7 @@ class CommentSeeder extends Seeder
             DB::table('comments')->updateOrInsert(
                 [
                     'content' => $content,
-                    'author_id' => $author_id,
+                    'user_id' => $user_id,
                     'article_id' => $article_id,
                 ],
                 [
