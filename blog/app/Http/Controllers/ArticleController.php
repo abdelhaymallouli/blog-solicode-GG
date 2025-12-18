@@ -38,6 +38,10 @@ class ArticleController extends Controller
 
         $articles = $query->latest()->paginate(9)->withQueryString();
 
+        if ($request->ajax()) {
+            return view('partials.articles-list', compact('articles'));
+        }
+
         return view('search', compact('articles'));
     }
 

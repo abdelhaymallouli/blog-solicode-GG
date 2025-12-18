@@ -5,7 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoliCode Blog - @yield('title', 'Accueil')</title>
-    <!-- Tailwind CSS -->
+
+    <!-- Google Fonts Inter & Outfit -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vite Assets (Tailwind CSS + JS) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = {
@@ -23,13 +32,6 @@
             }
         }
     </script>
-    <!-- Google Fonts Inter & Outfit -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen dark:bg-slate-900">
@@ -44,6 +46,7 @@
 
     <!-- Preline UI JS -->
     <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    @stack('scripts')
 </body>
 
 </html>

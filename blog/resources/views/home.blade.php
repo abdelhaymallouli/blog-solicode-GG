@@ -17,19 +17,20 @@
                         </p>
                         <div class="mt-7 sm:mt-12 mx-auto max-w-xl relative">
                             <form action="{{ route('articles.search') }}" method="GET">
-                                <div
-                                    class="relative z-10 flex gap-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
+                                <div class="relative z-10 flex gap-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
                                     <div class="w-full">
-                                        <label for="hs-search-article-1"
-                                            class="block text-sm text-gray-700 font-medium dark:text-white"><span
-                                                class="sr-only">Rechercher</span></label>
-                                        <input type="text" name="q" id="hs-search-article-1"
-                                            class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
+                                        <label for="hs-search-article-1" class="sr-only">Rechercher</label>
+                                        <input 
+                                            type="text" 
+                                            name="q" 
+                                            id="hs-search-article-1"
+                                            class="py-2.5 px-4 block w-full border-transparent rounded-lg text-gray-800 placeholder-gray-400 bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors dark:bg-slate-800 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:bg-slate-700 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                             placeholder="Rechercher un tutoriel, une techno...">
                                     </div>
                                     <div>
-                                        <button type="submit"
-                                            class="w-[46px] h-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                        <button 
+                                            type="submit"
+                                            class="w-[46px] h-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800 transition-all disabled:opacity-50 disabled:pointer-events-none">
                                             <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24"
                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -40,7 +41,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
+                            <div class="hidden md:block absolute top-0 end-0 -translate-y-4 translate-x-20">
                                 <svg class="w-16 h-auto text-orange-500" width="121" height="135" viewBox="0 0 121 135"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor"
@@ -51,7 +52,7 @@
                                         stroke-width="10" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="hidden md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
+                            <div class="hidden md:block absolute bottom-0 start-0 translate-y-5 -translate-x-24">
                                 <svg class="w-40 h-auto text-cyan-500" width="347" height="188" viewBox="0 0 347 188"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
