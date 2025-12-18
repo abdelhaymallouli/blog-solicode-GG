@@ -58,7 +58,11 @@
 
         <!-- Pagination -->
         <div class="mt-10">
-            {{ $articles->links() }}
+            <div class="mb-4 text-center sm:text-left text-sm text-gray-700 dark:text-gray-400">
+                Showing <span class="font-medium">{{ $articles->count() }}</span> of <span
+                    class="font-medium">{{ $articles->total() }}</span> results
+            </div>
+            {{ $articles->links('components.pagination') }}
         </div>
     </div>
 @endsection
