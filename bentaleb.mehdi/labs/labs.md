@@ -1,5 +1,5 @@
 ## Labs:
 
+## Lab :
 
-## Labs :
-- Class en Deux Fichier
+-Trait ( Class en Deux Fichier )
