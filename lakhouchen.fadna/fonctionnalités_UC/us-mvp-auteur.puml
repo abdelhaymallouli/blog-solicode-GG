@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "Auteur" as Author
+
+package "Dashboard Auteur" {
+
+  usecase "Consulter le Dashboard Auteur" as UC_Dashboard
+  usecase "Voir le nombre de ses articles" as UC_CountArticles
+  usecase "Voir le total des vues de ses articles" as UC_TotalViews
+  usecase "Consulter son activité récente" as UC_Activity
+  usecase "Accéder à la liste de ses articles" as UC_MyArticles
+  usecase "Créer un nouvel article" as UC_NewArticle
+}
+
+Author -- UC_Dashboard
+Author -- UC_CountArticles
+Author -- UC_TotalViews
+Author -- UC_Activity
+Author -- UC_MyArticles
+Author -- UC_NewArticle
+
+@enduml
