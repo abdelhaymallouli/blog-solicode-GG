@@ -8,5 +8,4 @@
 - Dashboard (admin) 
 
 ## Test Maquette :
-- Admin : Hamouda 
-
+- Hamouda (Admin)
