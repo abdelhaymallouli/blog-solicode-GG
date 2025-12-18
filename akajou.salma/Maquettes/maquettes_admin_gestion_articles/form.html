@@ -73,20 +73,7 @@
                         Articles
                     </a>
                 </li>
-                <li>
-                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
-                        href="../categories/index.html">
-                        <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
-                        Catégories
-                    </a>
-                </li>
-                <li>
-                    <a class="flex items-center gap-x-3 py-2.5 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
-                        href="../tags/index.html">
-                        <i data-lucide="tag" class="w-[18px] h-[18px]"></i>
-                        Tags
-                    </a>
-                </li>
+
             </ul>
         </nav>
     </div>
@@ -103,32 +90,7 @@
                     <span>Solicode<span class="text-blue-600">Blog</span></span>
                 </a>
             </div>
-            <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
-                <div class="hidden sm:block"></div>
-                <div class="flex flex-row items-center justify-end gap-2">
-                    <div class="relative items-center inline-flex" data-hs-dropdown-placement="bottom-right">
-                        <button id="hs-dropdown-with-header" type="button"
-                            class="hs-dropdown-toggle inline-flex justify-center items-center gap-2 w-[2.375rem] h-[2.375rem] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-slate-800 dark:focus:ring-slate-700 dark:focus:ring-offset-gray-800">
-                            <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
-                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
-                                alt="Image Description">
-                        </button>
-                        <div
-                            class="absolute right-0 top-full mt-2 z-50 transition-[opacity,margin] duration opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700">
-                            <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Connecté en tant que</p>
-                                <p class="text-sm font-medium text-gray-800 dark:text-gray-300">admin@solicode.co</p>
-                            </div>
-                            <div class="mt-2 py-2 first:pt-0 last:pb-0">
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100"
-                                    href="#">Mon Profil</a>
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-600 hover:bg-gray-100"
-                                    href="../index.html">Se déconnecter</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </nav>
     </header>
 
@@ -211,6 +173,7 @@
                                 <select
                                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                                     <option>Brouillon</option>
+                                    <option>À valider</option>
                                     <option>Publié</option>
                                     <option>Archivé</option>
                                 </select>
@@ -235,20 +198,48 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium mb-2 dark:text-white">Catégorie</label>
-                                <select
-                                    class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                    <option selected>Sélectionner...</option>
-                                    <option>Backend / Laravel</option>
-                                    <option>Mobile / Android</option>
-                                    <option>Frontend</option>
-                                </select>
+                                <!-- Custom Dropdown Checkbox Categories -->
+                                <div class="relative w-full">
+                                    <button id="cat-dropdown-btn" type="button"
+                                        class="py-3 px-4 inline-flex justify-between items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
+                                        Sélectionner...
+                                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+
+                                    <div id="cat-dropdown-menu"
+                                        class="absolute z-50 w-full bg-white shadow-lg rounded-lg p-2 mt-2 border border-gray-200 dark:bg-slate-800 dark:border-gray-700 hidden">
+                                        <div class="space-y-2">
+                                            <label
+                                                class="flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-slate-700 p-2 rounded-lg cursor-pointer">
+                                                <input type="checkbox"
+                                                    class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                                <span class="text-sm text-gray-800 dark:text-gray-200">Backend /
+                                                    Laravel</span>
+                                            </label>
+
+                                            <label
+                                                class="flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-slate-700 p-2 rounded-lg cursor-pointer">
+                                                <input type="checkbox"
+                                                    class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                                <span class="text-sm text-gray-800 dark:text-gray-200">Mobile /
+                                                    Android</span>
+                                            </label>
+
+                                            <label
+                                                class="flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-slate-700 p-2 rounded-lg cursor-pointer">
+                                                <input type="checkbox"
+                                                    class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                                                <span class="text-sm text-gray-800 dark:text-gray-200">Frontend</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 dark:text-white">Tags</label>
-                                <input type="text"
-                                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                                    placeholder="Ex: php, tuto (séparés par virgule)">
-                            </div>
+
                         </div>
                     </div>
 
@@ -269,6 +260,13 @@
 
                 </div>
             </div>
+            <!-- Bottom Action Button -->
+            <div class="mt-6 flex justify-end">
+                <button type="submit"
+                    class="py-3 px-6 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Ajouter
+                </button>
+            </div>
         </form>
 
     </main>
@@ -277,21 +275,51 @@
     <script>
         lucide.createIcons();
         document.addEventListener('DOMContentLoaded', () => {
-            const dropdownToggle = document.getElementById('hs-dropdown-with-header');
-            if (dropdownToggle) {
-                const dropdownMenu = dropdownToggle.nextElementSibling;
-                dropdownToggle.addEventListener('click', (e) => {
+            function initDropdown(toggleId) {
+                const toggle = document.getElementById(toggleId);
+                if (!toggle) return;
+
+                const menu = toggle.nextElementSibling;
+
+                toggle.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    dropdownMenu.classList.toggle('hidden');
-                    dropdownMenu.classList.toggle('opacity-0');
+                    menu.classList.toggle('hidden');
+                    menu.classList.toggle('opacity-0');
                 });
+
                 document.addEventListener('click', (e) => {
-                    if (!dropdownToggle.contains(e.target)) {
-                        dropdownMenu.classList.add('hidden');
-                        dropdownMenu.classList.add('opacity-0');
+                    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                        menu.classList.add('hidden');
+                        menu.classList.add('opacity-0');
                     }
                 });
             }
+
+            // Custom Dropdown for Categories
+            const catBtn = document.getElementById('cat-dropdown-btn');
+            const catMenu = document.getElementById('cat-dropdown-menu');
+
+            if (catBtn && catMenu) {
+                catBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    catMenu.classList.toggle('hidden');
+                });
+
+                // Prevent closing when clicking inside the menu
+                catMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!catBtn.contains(e.target) && !catMenu.contains(e.target)) {
+                        catMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Init Header Dropdown (Generic)
+            initDropdown('hs-dropdown-with-header');
         });
     </script>
 </body>
