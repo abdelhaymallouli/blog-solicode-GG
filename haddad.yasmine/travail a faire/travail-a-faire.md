@@ -5,8 +5,8 @@
 - Gerer les Tages
 
 ## Fonctionnalité :
-- Dashboard (admin) 
+- Tages (admin) 
 
 ## Test Maquette :
-- Abdellatif Soklabi (Admin)
+- Abdellatif Souklabi (formateur)
 
