@@ -1,5 +1,8 @@
 ## Compte rendu – Améliorations apportées 
+## Formateur : Fatine Chehab
 
+## Contexte
+Ce document résume les remarques et recommandations formulées par la formateur Fatine lors de la validation des maquettes du blog d’articles Solicode, avant le passage au développement avec Laravel.
 ## 1. Partie Administration – Gestion des Articles
 
 - Le champ **Statut** dans le formulaire d’ajout d’article doit être remplacé par un **menu déroulant (select)** au lieu d’un  radio bouton.  
