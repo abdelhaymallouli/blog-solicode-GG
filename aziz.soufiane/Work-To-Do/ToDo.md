@@ -1,7 +1,10 @@
-## Work To Do :
+# travail à faire
 
-## labs:
-- AJAX
+## Labs
+- Ajax
 
-## functionalities :
-- Manage Users
+## Fonctionnalités à développer
+- Dashboard dédié aux auteurs 
+
+## Validation & tests
+- Tests des maquettes réalisés par : Mr.Youssef
