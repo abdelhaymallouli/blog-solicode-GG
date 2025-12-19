@@ -7,15 +7,14 @@ use App\Services\ArticleService;
 class HomeController extends Controller
 {
     public function __construct(
-        protected ArticleService $articleService
+        protected \App\Services\HomeService $homeService
     ) {
     }
 
     public function index()
     {
-        $featuredArticle = $this->articleService->getFeaturedArticle();
-        $latestArticles = $this->articleService->getLatestArticles(6, $featuredArticle?->id);
+        $data = $this->homeService->getHomePageData();
 
-        return view('home', compact('featuredArticle', 'latestArticles'));
+        return view('home', $data);
     }
 }

@@ -62,10 +62,7 @@ class ArticleService
 
         // Apply search filter
         if (!empty($filters['q'])) {
-            $query->where(function ($q) use ($filters) {
-                $q->where('title', 'like', "%{$filters['q']}%")
-                    ->orWhere('content', 'like', "%{$filters['q']}%");
-            });
+            $this->applySearchFilter($query, $filters['q'], ['title', 'content']);
         }
 
         // Apply category filter
@@ -82,9 +79,8 @@ class ArticleService
             });
         }
 
-        return $query->latest()
-            ->paginate(9)
-            ->withQueryString();
+        $this->applyOrder($query);
+        return $this->paginateQuery($query, 9);
     }
 
     /**
@@ -96,6 +92,20 @@ class ArticleService
             ->where('status', 'published')
             ->with(['user', 'tags', 'categories', 'comments.user'])
             ->firstOrFail();
+    }
+
+    /**
+     * Get article with all relationships for display and increment view count
+     */
+    public function getArticleForView(Article $article): Article
+    {
+        // Use existing method to load and validate
+        $article = $this->getArticleForDisplay($article);
+
+        // Increment view count
+        $this->incrementViewCount($article);
+
+        return $article;
     }
 
     /**
