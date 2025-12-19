@@ -129,6 +129,24 @@
                     </div>
                 </div>
 
+                <!-- Search Input -->
+                <div class="flex-1 max-w-xs mx-auto sm:mx-0">
+                    <form action="{{ route('articles.search') }}" method="GET" class="relative group">
+                        <input type="text" name="q" value="{{ request('q') }}"
+                            class="h-9 py-2 px-4 ps-10 block w-full bg-gray-100 border-transparent rounded-xl text-sm focus:bg-white focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-gray-300 dark:placeholder-gray-500 dark:focus:ring-blue-600 transition-all font-medium"
+                            placeholder="Rechercher...">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg class="w-3.5 h-3.5 text-gray-400 group-focus-within:text-blue-600 transition-colors"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-700 mx-2"></div>
 
                 <!-- Auth Buttons -->
