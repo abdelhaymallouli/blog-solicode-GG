@@ -47,7 +47,7 @@
                 <!-- Categories Dropdown -->
                 <div class="relative">
                     <button id="categoriesDropdownBtn" type="button"
-                        class="inline-flex items-center gap-x-2 w-full sm:w-auto text-gray-600 hover:text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 transition-all {{ in_array(request('category'), ['laravel', 'php', 'android', 'design']) ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-500' : '' }}">
+                        class="inline-flex items-center gap-x-2 w-full sm:w-auto text-gray-600 hover:text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 transition-all {{ in_array(request('category'), ['laravel', 'php', 'android', 'design', 'education', 'activities']) ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-500' : '' }}">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -125,6 +125,35 @@
                                 <path d="M11 3H9" />
                             </svg>
                             Design
+                        </a>
+
+                        <!-- Education -->
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'education' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
+                            href="{{ route('articles.search', ['category' => 'education']) }}">
+                            <svg class="w-4 h-4 text-amber-500" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                            </svg>
+                            Education
+                        </a>
+
+                        <!-- Activities -->
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'activities' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
+                            href="{{ route('articles.search', ['category' => 'activities']) }}">
+                            <svg class="w-4 h-4 text-cyan-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.16 0-3" />
+                                <path d="m2.3 2.3 7.2 7.2" />
+                                <path d="m14 11 9-9" />
+                                <path d="m9 14-7 9" />
+                                <path d="m21.7 21.7-7.2-7.2" />
+                                <path d="M11 14c-1.26 1.5-5 2-5 2s.5-3.74 2-5c.84-.71 2.16-.71 3 0" />
+                                <path d="M13 10c1.26-1.5 5-2 5-2s-.5 3.74-2 5c-.84.71-2.16.71-3 0" />
+                            </svg>
+                            Activities
                         </a>
                     </div>
                 </div>
