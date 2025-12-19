@@ -1,13 +1,12 @@
 ## Travail à faire :
 
 ## labs:
-- Conflits de Git
+- Ajax
 
 ## les fonctionnalités :
-- formulaires d'ajout et de modification des articles
+- Gérer les articles
 
 ## Test maquettes :
 - formateur Fatine
-
 
 

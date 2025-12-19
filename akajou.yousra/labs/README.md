@@ -1,2 +1,2 @@
 ## labs:
-- AJAX
+- Ajax

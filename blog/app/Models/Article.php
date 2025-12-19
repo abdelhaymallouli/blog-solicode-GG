@@ -37,4 +37,3 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
-}

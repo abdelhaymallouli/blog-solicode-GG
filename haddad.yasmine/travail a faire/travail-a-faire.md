@@ -2,11 +2,11 @@
 
 
 ## Labs :
-- Bransh Roles 
+- Gerer les Tages
 
 ## Fonctionnalité :
-- Page Accueil  
+- Tages (admin) 
 
 ## Test Maquette :
+- M.Abdellatif Souklabi (formateur)
 
-- Apperenent : Mohammed Alae El bouazzaoui
