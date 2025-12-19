@@ -36,7 +36,7 @@ class ArticleSeeder extends Seeder
                 $created_at,
                 $updated_at,
                 $author_email,
-                // category_slug column is ignored – no category relationship exists in current migration
+                $category_slug // Added category_slug
             ] = $row;
 
             // Generate slug if missing (fallback for invalid data)
@@ -52,20 +52,36 @@ class ArticleSeeder extends Seeder
             $validStatuses = ['draft', 'published', 'archived'];
             $status = in_array($status, $validStatuses) ? $status : 'draft';
 
+            // Insert or Update Article
             DB::table('articles')->updateOrInsert(
                 ['slug' => $slug], // Unique constraint
                 [
-                    'title'       => $title,
-                    'content'     => $content,
-                    'image'       => $image ?: null,
-                    'status'      => $status,
-                    'view_count'  => max(0, (int) $view_count), // Prevent negative values
+                    'title' => $title,
+                    'content' => $content,
+                    'image' => $image ?: null,
+                    'status' => $status,
+                    'view_count' => max(0, (int) $view_count), // Prevent negative values
                     'is_featured' => (bool) $is_featured,
-                    'user_id'     => $author->id,
-                    'created_at'  => $created_at,
-                    'updated_at'  => now(),
+                    'user_id' => $author->id,
+                    'created_at' => $created_at,
+                    'updated_at' => now(),
                 ]
             );
+
+            // Handle Category Association
+            if ($category_slug) {
+                // Find Category ID
+                $categoryId = DB::table('categories')->where('slug', $category_slug)->value('id');
+                // Find Article ID (since we just inserted/updated it)
+                $articleId = DB::table('articles')->where('slug', $slug)->value('id');
+
+                if ($categoryId && $articleId) {
+                    DB::table('article_category')->updateOrInsert(
+                        ['article_id' => $articleId, 'category_id' => $categoryId],
+                        ['created_at' => now(), 'updated_at' => now()]
+                    );
+                }
+            }
         }
 
         fclose($file);

@@ -1,15 +1,521 @@
-title,slug,content,image,status,view_count,is_featured,created_at,updated_at,author_email
-Intro to AI,intro-to-ai,"Artificial intelligence basics.",/images/ai.jpg,published,100,1,2023-06-01,2023-06-01,john@example.com
-ML Basics,ml-basics,"Machine learning fundamentals.",/images/ml.jpg,published,50,0,2023-06-02,2023-06-02,jane@example.com
-Fitness Tips,fitness-tips,"Daily fitness routines.",/images/fitness.jpg,published,200,1,2023-06-03,2023-06-03,alice@example.com
-Healthy Eating,healthy-eating,"Nutrition guide.",/images/nutrition.jpg,draft,10,0,2023-06-04,2023-06-04,bob@example.com
-Travel to Europe,travel-to-europe,"European travel itinerary.",/images/europe.jpg,published,30,0,2023-06-05,2023-06-05,charlie@example.com
-Asian Adventures,asian-adventures,"Asia exploration.",/images/asia.jpg,published,150,1,2023-06-06,2023-06-06,john@example.com
-Easy Recipes,easy-recipes,"Simple cooking recipes.",/images/recipes.jpg,published,80,0,2023-06-07,2023-06-07,jane@example.com
-Gourmet Dishes,gourmet-dishes,"Advanced cooking.",/images/gourmet.jpg,draft,20,0,2023-06-08,2023-06-08,alice@example.com
-Quantum Physics,quantum-physics,"Quantum mechanics intro.",/images/quantum.jpg,published,120,1,2023-06-09,2023-06-09,bob@example.com
-Biology Basics,biology-basics,"Cell biology.",/images/biology.jpg,archived,40,0,2023-06-10,2023-06-10,charlie@example.com
-AI Ethics,ai-ethics,"Ethics in AI.",/images/ethics.jpg,published,90,0,2023-06-11,2023-06-11,john@example.com
-Travel Hacks,travel-hacks,"Tips for travelers.",/images/hacks.jpg,published,60,1,2023-06-12,2023-06-12,jane@example.com
-Neural Networks Deep Dive,neural-networks-deep-dive,"Advanced neural network concepts.",/images/nn.jpg,published,170,1,2023-06-13,2023-06-13,alice@example.com
-Sustainable Living,sustainable-living,"Eco-friendly habits.",/images/eco.jpg,draft,15,0,2023-06-14,2023-06-14,bob@example.com
+title,slug,content,image,status,view_count,is_featured,created_at,updated_at,author_email,category_slug
+Mastering Eloquent Relationships,mastering-eloquent,"# Mastering Eloquent Relationships in Laravel
+
+Eloquent is one of Laravel's most powerful features. It provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding ""Model"" which is used to interact with that table. Models allow you to query for data in your tables, as well as insert new records into the table.
+
+## Introduction to Relationships
+
+Database tables are often related to one another. For example, a blog post may have many comments, or an order could be related to the user who placed it. Eloquent makes managing and working with these relationships easy, and supports a variety of common relationships:
+
+- One To One
+- One To Many
+- Many To Many
+- Has One Through
+- Has Many Through
+- One To One (Polymorphic)
+- One To Many (Polymorphic)
+- Many To Many (Polymorphic)
+
+## One To One
+
+A one-to-one relationship is a very basic relation. For example, a User model might be associated with one Phone. To define this relationship, we place a phone method on the User model. The phone method should call the hasOne method and return its result:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
+class User extends Model
+{
+    /**
+     * Get the phone associated with the user.
+     */
+    public function phone(): HasOne
+    {
+        return $this->hasOne(Phone::class);
+    }
+}
+```
+
+## One To Many
+
+A one-to-many relationship is used to define relationships where a single model owns any amount of other models. For example, a blog post may have an infinite number of comments. Like all other Eloquent relationships, one-to-many relationships are defined by placing a function on your Eloquent model:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Post extends Model
+{
+    /**
+     * Get the comments for the blog post.
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+}
+```
+
+## Many To Many
+
+Many-to-many relations are slightly more complicated than one-to-one and one-to-many relationships. An example of such a relationship is a user with many roles, where the roles are also shared by other users. For example, many users may have the role of ""Admin"". To define this relationship, three database tables are needed: users, roles, and role_user. The role_user table is derived from the alphabetical order of the related model names, and contains the user_id and role_id columns.
+
+## Conclusion
+
+Understanding relationships is key to building robust Laravel applications. By mastering these connections, you can build complex data structures with ease and keep your code clean and expressive.",https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,1250,1,2023-01-10,2023-01-10,john@example.com,laravel
+Laravel 11: What's New,laravel-11-whats-new,"# Laravel 11: A Look at the New Features
+
+Laravel 11 continues the improvements made in Laravel 10.x with a slimmer application structure, per-second rate limiting, health routing, and more. In this article, we'll dive deep into what makes this release special.
+
+## Streamlined Application Structure
+
+Laravel 11 introduces a streamlined application structure for new Laravel applications, without requiring any changes to existing applications. The new application structure is intended to provide a leaner, more modern experience for the majority of users.
+
+### The Application Bootstrap File
+
+The `bootstrap/app.php` file has been revitalized as a code-first application configuration file. From this file, you may now customize your application's routing, middleware, service providers, exception handling, and more. This file unifies a variety of high-level application behavior settings that were previously scattered throughout your application's file structure.
+
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+```
+
+## Per-Second Rate Limiting
+
+Laravel 11 includes support for ""per-second"" rate limiting, allowing developers to limit the number of requests a user can make to a given route per second. This is a crucial feature for high-traffic APIs where granular control over traffic is required.
+
+## Health Routing
+
+New Laravel 11 applications include a `health` route directive, which instructs Laravel to define a simple health-check route. This route can be invoked by third-party application health monitoring services or orchestration systems like Kubernetes. By default, this route is defined at `/up`.
+
+## Conclusion
+
+Laravel 11 focuses on simplicity and modernization. The reduced boilerplate makes it approachable for newcomers while the new features like per-second rate limiting give power users the tools they need.",https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,850,0,2023-01-15,2023-01-15,jane@example.com,laravel
+Building APIs with Laravel Sanctum,laravel-sanctum-api,"# Building Authenticated APIs with Laravel Sanctum
+
+Laravel Sanctum provides a featherweight authentication system for SPAs (single page applications), mobile applications, and simple, token based APIs. Sanctum allows each user of your application to generate multiple API tokens for their account. These tokens may be granted abilities / scopes which specify which actions the tokens are allowed to perform.
+
+## Installation
+
+To get started, you may install Sanctum via the Composer package manager:
+
+```bash
+composer require laravel/sanctum
+```
+
+Next, you should publish the Sanctum configuration and migration files using the `vendor:publish` Artisan command. The `sanctum` configuration file will be placed in your application's `config` directory:
+
+```bash
+php artisan vendor:publish --provider=""Laravel\Sanctum\SanctumServiceProvider""
+```
+
+Finally, you should run your database migrations. Sanctum will create one database table in which to store API tokens:
+
+```bash
+php artisan migrate
+```
+
+## Issuing API Tokens
+
+Sanctum allows you to issue API tokens / personal access tokens that may be used to authenticate API requests to your application. When making requests using API tokens, the token should be included in the Authorization header as a Bearer token.
+
+To begin issuing tokens for users, your User model should use the `Laravel\Sanctum\HasApiTokens` trait:
+
+```php
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+}
+```
+
+## Protecting Routes
+
+To protect routes so that all incoming requests must be authenticated, you should attach the `sanctum` authentication guard to your protected routes within your `routes/api.php` file. This guard will ensure that incoming requests are authenticated as either a stateful, cookie authenticated request or contain a valid API token header if the request is from a third party.
+
+```php
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+```
+
+## Summary
+
+Sanctum is the go-to solution for API authentication in Laravel when you don't need the full power of OAuth2 provided by Passport. It's simple, secure, and easy to set up.",https://images.unsplash.com/photo-1623282033815-40b05d96c903?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,600,0,2023-01-20,2023-01-20,alice@example.com,laravel
+Modern PHP: Enums and Readonly Classes,modern-php-enums,"# Modern PHP: Leveraging Enums and Readonly Properties
+
+PHP has evolved significantly over the last few years. PHP 8.1 introduced several features that change the way we write code, most notably Enums and Readonly properties. These features significantly improve type safety and developer experience.
+
+## PHP Enumerations (Enums)
+
+Enums (enumerations) are a layer over classes and objects. They are used to create a set of named constants.
+
+```php
+enum Suit
+{
+    case Hearts;
+    case Diamonds;
+    case Clubs;
+    case Spades;
+}
+```
+
+You can use Enums to type-hint properties, return values, and parameters, ensuring that only valid values are passed around your application.
+
+### Backed Enums
+
+By default, Enumerated Cases have no scalar equivalent. They are simply singleton objects. However, there are many cases where an Enumerated Case needs to be able to round-trip to a database or a similar data store, so defining a scalar equivalent built-in (integer or string) for it is useful.
+
+```php
+enum Suit: string
+{
+    case Hearts = 'H';
+    case Diamonds = 'D';
+    case Clubs = 'C';
+    case Spades = 'S';
+}
+```
+
+## Readonly Properties
+
+Readonly properties allow you to define properties that can only be written once. This is great for creating immutable data transfer objects (DTOs).
+
+```php
+class UserProfile
+{
+    public function __construct(
+        public readonly string $name,
+        public readonly string $email,
+    ) {}
+}
+```
+
+Once initialized, the `$name` and `$email` properties cannot be modified. This immutability makes your code safer and easier to reason about, as you can be sure the state of the object won't change unexpectedly.
+
+## Why This Matters
+
+Adopting these modern PHP features leads to code that is:
+1. **Less Error-Prone**: Strict typing prevents invalid states.
+2. **More Expressive**: Intent is clearly defined in the code structure.
+3. **Easier to Maintain**: Immutability reduces side effects.
+
+Upgrade your PHP version today and start enjoying these benefits!",https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,500,0,2023-02-05,2023-02-05,bob@example.com,php
+PHP Performance Optimization Tips,php-performance-tips,"# Boosting PHP Performance: Essential Tips
+
+Optimizing PHP performance is crucial for high-traffic applications. While PHP 8 is faster than ever, there are still many strategies you can employ to ensure your application runs at peak efficiency. Caching, opcode optimization, and efficient database queries are key areas to focus on.
+
+## 1. Enable Opcache
+
+OPcache improves PHP performance by storing precompiled script bytecode in shared memory, thereby removing the need for PHP to load and parse scripts on each request. Ensure Opcache is enabled in your `php.ini` file for production environments.
+
+```ini
+opcache.enable=1
+opcache.memory_consumption=128
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=4000
+```
+
+## 2. Optimize Database Queries
+
+The database is often the bottleneck in web applications.
+- **Select only what you need**: Avoid `SELECT *`. Explicitly list columns.
+- **Use Indexes**: Always index columns used in `WHERE`, `ORDER BY`, and `JOIN` clauses.
+- **Eager Loading**: Prevent the N+1 query problem in ORMs like Laravel's Eloquent by using eager loading (`with('relationship')`).
+
+## 3. Use Caching Wisely
+
+Caching is one of the most effective ways to improve performance.
+- **Object Caching**: Store expensive query results in Redis or Memcached.
+- **Page Caching**: Cache full HTML pages for static content.
+- **Opcode Caching**: (As mentioned above).
+
+## 4. Update PHP Version
+
+Always run the latest stable version of PHP. Each major release offers significant performance improvements over the previous ones. PHP 8.x is substantially faster than PHP 7.x due to the JIT (Just-In-Time) compiler and other optimizations.
+
+## Conclusion
+
+Performance is an ongoing process. Regularly profile your application using tools like Blackfire or Xdebug to identify bottlenecks and apply these optimizations to keep your users happy.",https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,450,0,2023-02-10,2023-02-10,charlie@example.com,php
+Understanding Dependency Injection,dependency-injection-php,"# Demystifying Dependency Injection in PHP
+
+Dependency Injection (DI) is a design pattern that allows us to remove hard-coded dependencies and make our application loosely coupled, extendable, and maintainable. It sounds complex, but the concept is actually quite simple.
+
+## What is a Dependency?
+
+A dependency is any object that another object requires to function. For example, if a `UserCreator` class needs a `Database` class to save a user, the `Database` class is a dependency of `UserCreator`.
+
+## Without Dependency Injection
+
+```php
+class UserCreator {
+    protected $db;
+
+    public function __construct() {
+        $this->db = new Database(); // Hard dependency
+    }
+}
+```
+In this example, `UserCreator` is tightly coupled to `Database`. You cannot easily swap the database implementation or mock it for testing.
+
+## With Dependency Injection
+
+```php
+class UserCreator {
+    protected $db;
+
+    public function __construct(Database $db) {
+        $this->db = $db; // Injected dependency
+    }
+}
+```
+Now, `UserCreator` doesn't care how the `Database` object is created. It just asks for it. This allows you to pass in any valid `Database` object (or a subclass/interface implementation).
+
+## The Service Container
+
+In frameworks like Laravel, the Service Container manages these dependencies automatically.
+
+```php
+$userCreator = app(UserCreator::class);
+```
+Laravel sees that `UserCreator` needs a `Database` instance, creates one, and passes it in. This automation is what makes DI so powerful in modern development.
+
+## Conclusion
+
+Dependency Injection promotes cleaner code, better testability, and easier maintenance. It is a fundamental concept that every PHP developer should master.",https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,900,0,2023-02-15,2023-02-15,john@example.com,php
+Getting Started with Jetpack Compose,jetpack-compose-intro,"# Revolutionizing Android UI with Jetpack Compose
+
+Jetpack Compose is Android's modern toolkit for building native UI. It simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs. It marks a shift from the imperative XML-based view system to a declarative approach.
+
+## Why Compose?
+
+- **Less Code**: You write less code compared to the Android View system.
+- **Intuitive**: It uses Kotlin, so you can use the full power of the language.
+- **Accelerated Development**: Live Previews allow you to see your changes instantly.
+
+## The Declarative Shift
+
+In the traditional view system, you manipulate the UI hierarchy directly (e.g., `textView.setText(""Hello"")`). In Compose, you describe the UI state, and the framework handles the updates.
+
+```kotlin
+@Composable
+fun Greeting(name: String) {
+    Text(text = ""Hello $name!"")
+}
+```
+
+## Basic Building Blocks
+
+Compose is built around Composable functions.
+
+### Column, Row, Box
+These are the standard layout components.
+- `Column`: Places items vertically.
+- `Row`: Places items horizontally.
+- `Box`: Stacks items on top of each other.
+
+```kotlin
+Column {
+    Text(""First item"")
+    Text(""Second item"")
+}
+```
+
+## State Management
+
+State in Compose is key. When state changes, the UI automatically recomposes.
+
+```kotlin
+var count by remember { mutableStateOf(0) }
+Button(onClick = { count++ }) {
+    Text(""Count is $count"")
+}
+```
+
+## Conclusion
+
+Jetpack Compose is the future of Android development. Its learning curve pays off with faster development cycles and more maintainable codebases.",https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,1100,1,2023-03-01,2023-03-01,jane@example.com,android
+Kotlin Coroutines Made Simple,kotlin-coroutines,"# Simplifying Asynchronous Programming with Kotlin Coroutines
+
+Asynchronous programming can be difficult. Callbacks, threads, and futures often lead to complex, unreadable code. Kotlin Coroutines solve this by allowing you to write asynchronous code in a sequential manner. They are defined as light-weight threads, but they are much cheaper to create and maintain.
+
+## What are Coroutines?
+
+A coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
+
+## Launch vs Async
+
+### Launch
+`launch` is a coroutine builder. It launches a new coroutine concurrently with the rest of the code, which continues to work independently. It returns a `Job` and does not carry any resulting value.
+
+```kotlin
+GlobalScope.launch { 
+    delay(1000L) 
+    println(""World!"") 
+}
+println(""Hello,"")
+```
+
+### Async
+`async` is like `launch`. It starts a separate coroutine which is a light-weight thread that works concurrently with all the other coroutines. The difference is that `launch` returns a `Job` and does not carry any resulting value, while `async` returns a `Deferred` — a light-weight non-blocking future that represents a promise to provide a result later.
+
+```kotlin
+val deferred = async {
+    // compute value
+    return@async 42
+}
+val result = deferred.await()
+```
+
+## Structured Concurrency
+
+Kotlin encourages structured concurrency. Instead of launching coroutines globally, you use specific scopes (like `viewModelScope` in Android) which automatically cancel coroutines when the scope is destroyed, preventing memory leaks.
+
+## Conclusion
+
+Coroutines are indispensable for modern Kotlin development, especially in Android where managing background threads is critical for UI performance.",https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,750,0,2023-03-10,2023-03-10,alice@example.com,android
+Android Architecture Components,android-architecture,"# Building Robust Apps with Android Architecture Components
+
+Architecture Components are part of Android Jetpack. They are a collection of libraries that help you design robust, testable, and maintainable apps. They handle the complex lifecycle of Android components and allow you to persist data, manage UI-related data, and more.
+
+## Key Components
+
+### ViewModel
+The `ViewModel` class is designed to store and manage UI-related data in a lifecycle conscious way. The `ViewModel` class allows data to survive configuration changes such as screen rotations.
+
+```kotlin
+class MyViewModel : ViewModel() {
+    private val users: MutableLiveData<List<User>> by lazy {
+        MutableLiveData<List<User>>().also {
+            loadUsers()
+        }
+    }
+    fun getUsers(): LiveData<List<User>> {
+        return users
+    }
+}
+```
+
+### LiveData
+`LiveData` is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. This responsiveness verifies that LiveData only updates app component observers that are in an active lifecycle state.
+
+### Room
+Room is a persistence library that provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+
+```kotlin
+@Entity
+data class User(
+    @PrimaryKey val uid: Int,
+    @ColumnInfo(name = ""first_name"") val firstName: String?,
+    @ColumnInfo(name = ""last_name"") val lastName: String?
+)
+```
+
+## Benefits
+- **No Memory Leaks**: ViewModels and LiveData prevent common memory leak issues.
+- **Boilerplate Reduction**: Room removes a lot of the boilerplate code needed for database operations.
+- **Testability**: Separating logic into ViewModels makes unit testing significantly easier.
+
+## Conclusion
+
+Adopting Architecture Components is standard practice for modern Android development. They provide a solid foundation for any production-grade application.",https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,620,0,2023-03-20,2023-03-20,bob@example.com,android
+UI Design Trends for 2025,ui-trends-2025,"# Anticipating UI Design Trends for 2025
+
+As we approach 2025, the digital landscape continues to evolve rapidly. User interfaces are becoming more immersive, accessible, and personalized. Here are some of the key trends we predict will dominate the industry in the coming years.
+
+## 1. Neomorphism 2.0
+Neomorphism (Soft UI) had a moment, but it had accessibility issues. Version 2.0 combines the soft, extruded plastic look with higher contrast and better visual hierarchy. It retains the tactile feel but ensures that buttons and inputs are clearly distinguishable for all users.
+
+## 2. Glassmorphism
+Glassmorphism continues to be popular. It relies on transparency (frosted glass effect), vivid colors to highlight the blurred transparency, and a light border on the translucent objects. It works exceptionally well in dark mode environments.
+
+## 3. Dark Mode as Standard
+Dark mode is no longer an optional feature; it's a standard requirement. Apps are now designed ""dark-first"" in some contexts. High contrast dark themes (OLED black) save battery and reduce eye strain.
+
+## 4. Micro-Interactions
+Micro-interactions are subtle animations that respond to user actions. They are vital for providing feedback and making the interface feel alive. In 2025, expect to see more physics-based, reliable, and delightful micro-interactions that guide the user journey.
+
+## 5. 3D Elements
+With the web becoming more capable (WebGL, Three.js), 3D elements are moving from gimmicks to core navigation and product showcase features. They add depth and realism that flat design cannot match.
+
+## Conclusion
+
+Design is cyclical, but usability is timeless. While staying on top of trends is important, the focus for 2025 will remain on creating inclusive, accessible, and performant user experiences that look stunning.",https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,1500,1,2023-04-01,2023-04-01,charlie@example.com,design
+Color Theory in Web Design,color-theory-web,"# The Science and Art of Color Theory in Web Design
+
+Color is one of the most powerful tools in a designer's arsenal. It can evoke emotion, guide attention, and even influence conversion rates. Understanding color theory is essential for creating effective and visually appealing websites.
+
+## The Color Wheel
+The color wheel is the basis of color theory. It shows the relationship between colors.
+- **Primary Colors**: Red, Blue, Yellow.
+- **Secondary Colors**: Green, Orange, Purple (created by mixing primary colors).
+- **Tertiary Colors**: Created by mixing primary and secondary colors.
+
+## Color Harmonies
+
+### Complementary
+Colors that are opposite each other on the color wheel (e.g., Blue and Orange). This creates high contrast and high impact. Use this for Call-to-Action buttons.
+
+### Analogous
+Colors that are next to each other on the color wheel (e.g., Blue, Blue-Green, Green). They usually match well and create serene and comfortable designs.
+
+### Monochromatic
+Variations of lightness and saturation of a single color. This is clean and elegant.
+
+## Psychology of Color
+- **Red**: Energy, Passion, Danger.
+- **Blue**: Trust, Calm, Stability.
+- **Green**: Growth, Money, Nature.
+- **Yellow**: Optimism, Caution.
+- **Black**: Luxury, Mystery.
+
+## Accessibility
+Color is not just about aesthetics; it's about usability. Always check contrast ratios to ensure text is readable against the background color. Tools like the WebAIM Contrast Checker are invaluable.
+
+## Conclusion
+
+Mastering color theory allows you to make informed decisions that improve both the look and the function of your designs. Don't just pick colors you like; pick colors that work.",https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,800,0,2023-04-10,2023-04-10,john@example.com,design
+Figma Tips for Developers,figma-tips-dev,"# Figma for Developers: Bridging the Gap
+
+Figma has become the industry standard for UI design, but it's not just for designers. Developers can leverage Figma's features to improve their workflow, ensuring pixel-perfect implementation of designs. Here are some top tips for developers using Figma.
+
+## 1. Dev Mode
+Figma's new Dev Mode is built specifically for developers.
+- **Inspect**: Click on any element to see its CSS, iOS, or Android code.
+- **Box Model**: Instantly see padding, margin, and dimensions.
+- **Assets**: Download assets (SVG, PNG) directly without asking the designer.
+
+## 2. Understanding Auto Layout
+Auto Layout is essentially Flexbox for designers. If a designer uses Auto Layout, the translation to CSS (using `display: flex`, `gap`, `justify-content`) is almost 1:1.
+- **Horizontal/Vertical**: Corresponds to `flex-direction`.
+- **Spacing**: Corresponds to `gap`.
+- **Padding**: Corresponds to `padding`.
+
+## 3. Styles and Variables
+Check the right-hand panel for color styles and typography styles.
+- Don't hardcode hex values (e.g., `#3B82F6`). Look for the style name (e.g., `Primary / 500`) and use your CSS variable or Tailwind utility (e.g., `bg-blue-500`).
+
+## 4. Components and Variants
+Understand that a design might show one ""state"" of a component. Look for ""Variants"" to see other states like Hover, Active, Disabled, or Error. This ensures you build the component completely from the start.
+
+## Conclusion
+
+Figma is a shared language. By understanding how it works, developers can collaborate better with designers, reduce back-and-forth, and build higher quality user interfaces faster.",https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80,published,950,0,2023-04-15,2023-04-15,jane@example.com,design
