@@ -179,12 +179,12 @@
                 <div class="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-700 mx-2"></div>
 
                 <!-- Auth Buttons -->
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-center">
+                <!-- <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-center">
                     <a class="font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 py-2 px-3 rounded-lg transition-all dark:text-gray-400 dark:hover:text-blue-500 dark:hover:bg-blue-900/20"
                         href="#">Connexion</a>
                     <a class="py-2.5 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm"
                         href="#">S'inscrire</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
