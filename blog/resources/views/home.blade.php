@@ -128,7 +128,7 @@
                     </div>
 
                     <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+                    <!-- <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
                         <div>
                             <div class="text-3xl font-bold text-gray-900">150+</div>
                             <div class="text-sm text-gray-600 mt-1">Tutoriels</div>
@@ -141,7 +141,7 @@
                             <div class="text-3xl font-bold text-gray-900">1000+</div>
                             <div class="text-sm text-gray-600 mt-1">Étudiants</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Right Image -->
