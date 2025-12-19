@@ -8,5 +8,5 @@
 - Tages (admin) 
 
 ## Test Maquette :
-- Abdellatif Soklabi (formateur)
+- Abdellatif Souklabi (formateur)
 
