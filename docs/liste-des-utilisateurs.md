@@ -2,16 +2,15 @@
 
 ## Administrateur
 
-* M. Hammouda
+* M. Hammouda --> Mehdi Bentaleb
 
 ## Formateurs
 
-* Mme Fatine Chehab
-* M. Abdellatif Souklabi
-* M. Youssef
+* Mme Fatine Chehab --> Salma Akajou
+* M. Abdellatif Souklabi --> Yasmine Hadad
+* M. Youssef --> Soufiane Aziz
 
 ## Apprenants
-
-* Ayoub Faqihi
-* Mohamed Yassir El Mesbahi
-* Mohammed Alae El Bouazzaoui
+* Ayoub Faqihi --> Anouar Benyekhlef
+* Mohamed Yassir El Mesbahi --> Mohamed Ouallou
+* Mohammed Alae El Bouazzaoui --> Abdelhay Mellouli
