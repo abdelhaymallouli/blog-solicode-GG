@@ -22,4 +22,16 @@ class CategoryService
         $this->applyOrder($query, 'name', 'asc');
         return $query->get();
     }
+
+    public function getCategoryMeta(): array
+    {
+        return [
+            'laravel' => ['color' => 'text-red-500'],
+            'php' => ['color' => 'text-indigo-500'],
+            'android' => ['color' => 'text-green-500'],
+            'design' => ['color' => 'text-pink-500'],
+            'education' => ['color' => 'text-amber-500'],
+            'activities' => ['color' => 'text-cyan-500']
+        ];
+    }
 }

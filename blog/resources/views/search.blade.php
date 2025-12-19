@@ -12,31 +12,33 @@
             </div>
         </div>
 
-        <div class="relative max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="max-w-2xl mx-auto text-center mb-10">
-                <h2 class="text-3xl font-extrabold md:text-4xl md:leading-tight dark:text-white tracking-tight">
+        <!-- Reduced max-width from 85rem to 5xl and padding from py-12 to py-10 -->
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="max-w-2xl mx-auto text-center mb-8">
+                <h2 class="text-2xl font-extrabold md:text-3xl md:leading-tight dark:text-white tracking-tight">
                     Découvrez nos <span class="text-blue-600">Articles</span>
                 </h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-400">Explorez les dernières actualités, tutoriels et astuces du
-                    monde du développement.</p>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Explorez les dernières actualités, tutoriels et astuces du monde du développement.
+                </p>
             </div>
 
-            <!-- Unified Search & Filter Bar -->
-            <form id="search-form" action="{{ route('articles.search') }}" method="GET" class="max-w-4xl mx-auto mb-12">
+            <!-- Reduced max-width from 4xl to 3xl -->
+            <form id="search-form" action="{{ route('articles.search') }}" method="GET" class="max-w-3xl mx-auto mb-6">
                 @if(request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
 
                 <div class="flex flex-col sm:flex-row gap-3">
                     <!-- Category Dropdown -->
-                    <div class="relative inline-block w-full sm:w-56 flex-shrink-0">
+                    <div class="relative inline-block w-full sm:w-48 flex-shrink-0">
                         <button id="filterDropdownBtn" type="button"
-                            class="w-full h-14 py-2.5 px-4 inline-flex justify-between items-center gap-x-2 text-sm font-semibold rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 transition-all">
+                            class="w-full h-12 py-2.5 px-4 inline-flex justify-between items-center gap-x-2 text-sm font-semibold rounded-xl border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 transition-all">
                             <span id="currentFilterText" class="truncate">
                                 @if(request('category'))
                                     {{ ucfirst(request('category')) }}
                                 @else
-                                    Toutes les catégories
+                                    Catégories
                                 @endif
                             </span>
                             <svg id="filterChevron" class="w-4 h-4 transition-transform duration-200"
@@ -49,30 +51,22 @@
                         <div id="filterDropdownMenu"
                             class="hidden absolute left-0 right-0 mt-2 min-w-48 bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-slate-900 dark:border-gray-700 z-[70] overflow-hidden">
                             <div class="p-1.5 space-y-0.5">
-                                <!-- All Categories -->
                                 <a href="{{ route('articles.search', request()->only('q')) }}"
                                     data-category-name="Toutes les catégories" data-category-slug=""
                                     class="filter-item flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm transition-all {{ !request('category') ? 'bg-blue-600 text-white' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }}">
                                     Toutes les catégories
                                 </a>
 
-                                @php
-                                    $categoriesMeta = [
-                                        'laravel' => ['color' => 'text-red-500'],
-                                        'php' => ['color' => 'text-indigo-500'],
-                                        'android' => ['color' => 'text-green-500'],
-                                        'design' => ['color' => 'text-pink-500'],
-                                        'education' => ['color' => 'text-amber-500'],
-                                        'activities' => ['color' => 'text-cyan-500']
-                                    ];
-                                @endphp
-
                                 @foreach($categoriesMeta as $cat => $meta)
+                                    @php
+                                        $categoryColor = str_replace('text-', 'bg-', $meta['color']);
+                                    @endphp
                                     <a href="{{ route('articles.search', array_merge(request()->query(), ['category' => $cat])) }}"
                                         data-category-name="{{ ucfirst($cat) }}" data-category-slug="{{ $cat }}"
+                                        data-category-color="{{ $categoryColor }}"
                                         class="filter-item flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm transition-all {{ request('category') == $cat ? 'bg-blue-600 text-white' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }}">
                                         <span
-                                            class="w-2 h-2 rounded-full {{ request('category') == $cat ? 'bg-white' : str_replace('text-', 'bg-', $meta['color']) }}"></span>
+                                            class="w-2 h-2 rounded-full {{ request('category') == $cat ? 'bg-white' : $categoryColor }}"></span>
                                         {{ ucfirst($cat) }}
                                     </a>
                                 @endforeach
@@ -83,7 +77,7 @@
                     <!-- Search Input -->
                     <div class="relative group flex-grow">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
-                            <svg class="w-5 h-5 text-gray-400 group-focus-within:text-blue-600 transition-colors"
+                            <svg class="w-4 h-4 text-gray-400 group-focus-within:text-blue-600 transition-colors"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8" />
@@ -91,14 +85,14 @@
                             </svg>
                         </div>
                         <input id="search-input" type="text" name="q" value="{{ request('q') }}"
-                            class="h-14 py-4 px-4 ps-12 block w-full bg-white border-gray-200 shadow-sm rounded-2xl text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder-gray-500 dark:focus:ring-blue-600 transition-all"
-                            placeholder="Rechercher un sujet, un tutoriel...">
+                            class="h-12 py-3 px-4 ps-10 block w-full bg-white border-gray-200 shadow-sm rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder-gray-500 dark:focus:ring-blue-600 transition-all"
+                            placeholder="Rechercher un sujet...">
 
                         @if(request('q') || request('category'))
                             <div class="absolute inset-y-0 end-0 flex items-center pe-2">
                                 <a href="{{ route('articles.search') }}"
                                     class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Réinitialiser">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
@@ -164,16 +158,24 @@
                                 let found = false;
                                 filterItems.forEach(item => {
                                     const dot = item.querySelector('span');
+                                    const colorClass = item.dataset.categoryColor;
+
                                     if (item.dataset.categorySlug === (category || "")) {
                                         item.classList.add('bg-blue-600', 'text-white');
                                         item.classList.remove('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
                                         currentFilterText.textContent = item.dataset.categoryName;
-                                        if (dot) dot.classList.add('bg-white');
+                                        if (dot) {
+                                            dot.classList.add('bg-white');
+                                            if (colorClass) dot.classList.remove(colorClass);
+                                        }
                                         found = true;
                                     } else {
                                         item.classList.remove('bg-blue-600', 'text-white');
                                         item.classList.add('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
-                                        if (dot) dot.classList.remove('bg-white');
+                                        if (dot) {
+                                            dot.classList.remove('bg-white');
+                                            if (colorClass) dot.classList.add(colorClass);
+                                        }
                                     }
                                 });
                                 if (!found) currentFilterText.textContent = "Toutes les catégories";
@@ -269,15 +271,11 @@
                             i.classList.remove('bg-blue-600', 'text-white');
                             i.classList.add('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
 
-                            // Revert dot color
                             const dot = i.querySelector('span');
+                            const colorClass = i.dataset.categoryColor;
                             if (dot) {
                                 dot.classList.remove('bg-white');
-                                const originalColor = dot.classList.value.match(/bg-\w+-\d+/);
-                                if (!originalColor) {
-                                    // If it was already white, we need to find its metadata color
-                                    // But for simplicity, we just reload the fetch which will handle partial re-renders if needed.
-                                }
+                                if (colorClass) dot.classList.add(colorClass);
                             }
                         });
 
@@ -285,7 +283,11 @@
                         this.classList.remove('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
 
                         const activeDot = this.querySelector('span');
-                        if (activeDot) activeDot.classList.add('bg-white');
+                        const activeColorClass = this.dataset.categoryColor;
+                        if (activeDot) {
+                            activeDot.classList.add('bg-white');
+                            if (activeColorClass) activeDot.classList.remove(activeColorClass);
+                        }
 
                         fetchArticles(this.href);
                     });
