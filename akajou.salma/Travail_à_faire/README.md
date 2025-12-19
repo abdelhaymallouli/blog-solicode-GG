@@ -4,7 +4,7 @@
 - Conflits de Git
 
 ## les fonctionnalités :
-- Gérer les articles
+- formulaires d'ajout et de modification des articles
 
 ## Test maquettes :
 - formateur Fatine
