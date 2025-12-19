@@ -1,5 +1,5 @@
 
-# Compte rendu global – Retours utilisateurs
+# Compte rendu global – Retours utilisateurs apprenants
 
 ## Page d’accueil
 
