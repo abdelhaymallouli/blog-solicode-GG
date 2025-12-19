@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoliCode Blog - Recherche</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554' }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen dark:bg-slate-900">
+
+    <!-- ========== HEADER ========== -->
+    <header
+        class="sticky top-0 z-50 flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white/90 backdrop-blur-xl border-b border-gray-200 text-sm py-3 dark:bg-slate-900/90 dark:border-gray-700 transition-all duration-300 shadow-sm">
+        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+            <div class="flex items-center justify-between">
+                <a class="flex-none inline-flex items-center gap-x-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white group"
+                    href="index.html">
+                    <div
+                        class="flex justify-center items-center w-8 h-8 rounded-lg bg-blue-600 text-white shadow-lg shadow-blue-600/20 group-hover:scale-105 transition-transform duration-300">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                    </div>
+                    <span>Soli<span class="text-blue-600">Code</span></span>
+                </a>
+                <div class="sm:hidden">
+                    <button type="button"
+                        class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-lg border border-gray-200 font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        data-hs-collapse="#navbar-collapse" aria-controls="navbar-collapse"
+                        aria-label="Toggle navigation">
+                        <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="navbar-collapse"
+                class="hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+                <div
+                    class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-3 sm:mt-0 sm:pl-7">
+                    <a class="inline-flex items-center gap-x-2 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 py-2 px-3 rounded-lg transition-all dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                        href="index.html">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>Accueil
+                    </a>
+                    <a class="inline-flex items-center gap-x-2 font-medium text-blue-600 py-2 px-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 dark:text-blue-500 hover:bg-blue-100 transition-colors"
+                        href="search.html?category=laravel" aria-current="page">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m12 19 7-7 3 3-7 7-3-3z" />
+                            <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                            <path d="m2 2 7.586 7.586" />
+                            <circle cx="11" cy="11" r="2" />
+                        </svg>Laravel
+                    </a>
+                    <a class="inline-flex items-center gap-x-2 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 py-2 px-3 rounded-lg transition-all dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                        href="search.html?category=php">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+                            <path d="M8.5 8.5v.01" />
+                            <path d="M16 12v.01" />
+                            <path d="M12 16v.01" />
+                            <path d="M12 11.5v-2" />
+                            <path d="M16 8v3.5a2.5 2.5 0 1 0 5 0v-1.5a6 6 0 0 0-4.2-5.6" />
+                        </svg>PHP
+                    </a>
+                    <a class="inline-flex items-center gap-x-2 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 py-2 px-3 rounded-lg transition-all dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                        href="search.html?category=mobile">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                            <path d="M12 18h.01" />
+                        </svg>Mobile
+                    </a>
+                    <div class="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-700 mx-2"></div>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 items-center">
+                        <a class="font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 py-2 px-3 rounded-lg transition-all dark:text-gray-400 dark:hover:text-blue-500 dark:hover:bg-blue-900/20"
+                            href="login.html">Connexion</a>
+                        <a class="py-2.5 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 shadow-sm"
+                            href="register.html">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- ========== END HEADER ========== -->
+
+    <main class="flex-grow">
+        <!-- Search & Filter Section -->
+        <div class="bg-white border-b border-gray-200 dark:bg-slate-800 dark:border-gray-700">
+            <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">Rechercher dans le blog
+                    </h2>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="max-w-2xl mx-auto mb-6">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                        </div>
+                        <input type="text" id="HS-search-input"
+                            class="py-3 px-4 ps-11 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
+                            placeholder="Rechercher...">
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800">
+                        Tous
+                    </button>
+                    <button type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-transparent dark:text-white dark:hover:bg-gray-600">
+                        Laravel
+                    </button>
+                    <button type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-transparent dark:text-white dark:hover:bg-gray-600">
+                        PHP
+                    </button>
+                    <button type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-transparent dark:text-white dark:hover:bg-gray-600">
+                        Android
+                    </button>
+                    <button type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-transparent dark:text-white dark:hover:bg-gray-600">
+                        Design
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <a class="group border border-gray-200 flex flex-col h-full bg-white shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]"
+                    href="article.html">
+                    <div
+                        class="h-40 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl overflow-hidden relative">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Image Description">
+                        <span
+                            class="absolute top-3 right-3 py-1 px-3 rounded-full text-xs font-medium bg-white/90 text-gray-800 shadow-sm backdrop-blur-sm">Laravel</span>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <!-- Tags -->
+                        <div class="flex items-center gap-x-2 mb-3">
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#Laravel</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#PHP</span>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-white">
+                            Introduction à l'API Resource</h3>
+                        <p class="mt-3 text-gray-500 dark:text-gray-400 line-clamp-3">Découvrez comment transformer vos
+                            modèles Eloquent en réponses JSON proprement.</p>
+                    </div>
+                    <div
+                        class="mt-auto flex border-t border-gray-100 divide-x divide-gray-100 dark:border-gray-700 dark:divide-gray-700">
+                        <div class="p-4 flex items-center gap-x-3">
+                            <img class="w-8 h-8 rounded-full"
+                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+                                alt="Avatar">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Maria
+                                    T.</span>
+                                <span class="block text-xs text-gray-500">12 Déc</span>
+                            </div>
+                        </div>
+                        <div
+                            class="p-4 flex items-center gap-x-1 text-gray-500 border-l border-gray-100 dark:border-gray-700 ml-auto">
+                            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                            </svg>
+                            <span class="text-xs font-medium">5</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a class="group border border-gray-200 flex flex-col h-full bg-white shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]"
+                    href="article.html">
+                    <div
+                        class="h-40 flex flex-col justify-center items-center bg-pink-600 rounded-t-xl overflow-hidden relative">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Image Description">
+                        <span
+                            class="absolute top-3 right-3 py-1 px-3 rounded-full text-xs font-medium bg-white/90 text-gray-800 shadow-sm backdrop-blur-sm">Android</span>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <!-- Tags -->
+                        <div class="flex items-center gap-x-2 mb-3">
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#Android</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#Kotlin</span>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-white">
+                            Coroutines Kotlin</h3>
+                        <p class="mt-3 text-gray-500 dark:text-gray-400 line-clamp-3">Programmation asynchrone sur
+                            Android simplifiée avec les coroutines.</p>
+                    </div>
+                    <div
+                        class="mt-auto flex border-t border-gray-100 divide-x divide-gray-100 dark:border-gray-700 dark:divide-gray-700">
+                        <div class="p-4 flex items-center gap-x-3">
+                            <img class="w-8 h-8 rounded-full"
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+                                alt="Avatar">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Alex
+                                    D.</span>
+                                <span class="block text-xs text-gray-500">10 Déc</span>
+                            </div>
+                        </div>
+                        <div
+                            class="p-4 flex items-center gap-x-1 text-gray-500 border-l border-gray-100 dark:border-gray-700 ml-auto">
+                            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                            </svg>
+                            <span class="text-xs font-medium">12</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 3 etc... placeholder for more items -->
+                <a class="group border border-gray-200 flex flex-col h-full bg-white shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]"
+                    href="article.html">
+                    <div
+                        class="h-40 flex flex-col justify-center items-center bg-purple-600 rounded-t-xl overflow-hidden relative">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Image Description">
+                        <span
+                            class="absolute top-3 right-3 py-1 px-3 rounded-full text-xs font-medium bg-white/90 text-gray-800 shadow-sm backdrop-blur-sm">Design</span>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <!-- Tags -->
+                        <div class="flex items-center gap-x-2 mb-3">
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#Design</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 text-xs text-gray-600 rounded hover:bg-gray-200 transition">#UI/UX</span>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-white">
+                            Web Design 2026</h3>
+                        <p class="mt-3 text-gray-500 dark:text-gray-400 line-clamp-3">Les tendances UI/UX à suivre pour
+                            cette nouvelle année.</p>
+                    </div>
+                    <div
+                        class="mt-auto flex border-t border-gray-100 divide-x divide-gray-100 dark:border-gray-700 dark:divide-gray-700">
+                        <div class="p-4 flex items-center gap-x-3">
+                            <img class="w-8 h-8 rounded-full"
+                                src="https://images.unsplash.com/photo-1534751516042-4c54c189c9c4?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+                                alt="Avatar">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Sophie
+                                    L.</span>
+                                <span class="block text-xs text-gray-500">01 Déc</span>
+                            </div>
+                        </div>
+                        <div
+                            class="p-4 flex items-center gap-x-1 text-gray-500 border-l border-gray-100 dark:border-gray-700 ml-auto">
+                            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                            </svg>
+                            <span class="text-xs font-medium">8</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="flex justify-center items-center gap-x-1 mt-10">
+                <button type="button"
+                    class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                    <svg class="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                    <span aria-hidden="true" class="sr-only">Précédent</span>
+                </button>
+                <div class="flex items-center gap-x-1">
+                    <button type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center bg-gray-200 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-300 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-600 dark:text-white dark:focus:bg-gray-500"
+                        aria-current="page">1</button>
+                    <button type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">2</button>
+                    <button type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">3</button>
+                </div>
+                <button type="button"
+                    class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                    <span aria-hidden="true" class="sr-only">Suivant</span>
+                    <svg class="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-white border-t border-gray-200 mt-auto w-full dark:bg-slate-900 dark:border-gray-700">
+        <div class="max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="text-sm text-gray-500 dark:text-gray-400">© 2025 SoliCode. Tous droits réservés.</div>
+            </div>
+        </div>
+    </footer>
+    <!-- ========== END FOOTER ========== -->
+
+    <!-- Preline UI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+</body>
+
+</html>

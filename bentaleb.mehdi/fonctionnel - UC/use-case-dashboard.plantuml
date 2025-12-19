@@ -1,0 +1,54 @@
+@startuml
+' === Diagram Settings ===
+skinparam monochrome true
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+  FontSize 12
+  Padding 10
+}
+
+left to right direction
+
+' === Actors ===
+actor "Admin" as Admin
+
+' === Package & Use Cases ===
+package "Admin Dashboard" {
+
+  usecase "View Statistics" as UC_Stats
+  usecase "View Latest Articles" as UC_LatestArticles
+  usecase "View Recent Activities" as UC_Activities
+}
+
+' === Relationships ===
+Admin --> UC_Stats
+Admin --> UC_LatestArticles
+Admin --> UC_Activities
+
+' Optional relationship
+' UC_Activities ..> UC_Stats : <<extend>>
+
+' === Notes ===
+note right of UC_Stats
+Statistics Cards include:
+- Published Articles
+- Total Views
+- Total Users
+- Admins
+- Authors
+- Comments
+- New Comments
+end note
+
+note right of UC_Activities
+Includes logs of:
+- User actions
+- Comments
+- System events
+end note
+
+
+
+@enduml

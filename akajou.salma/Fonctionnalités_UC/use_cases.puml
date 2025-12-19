@@ -1,0 +1,22 @@
+@startuml Use_Cases_Admin
+left to right direction
+
+actor "Administrateur" as Admin
+
+package "Back-Office (Admin)" {
+  usecase "Gérer les Articles" as UC_CRUD
+  usecase "Rechercher un Article" as UC_Search
+  usecase "Filtrer les Articles\npar Catégorie" as UC_Filter
+  usecase "Valider les Articles" as UC_Validate
+}
+
+Admin -- UC_CRUD
+Admin -- UC_Search
+Admin -- UC_Filter
+Admin -- UC_Validate
+
+UC_Search .> UC_CRUD : <<extend>>
+UC_Filter .> UC_CRUD : <<extend>>
+UC_Validate .> UC_CRUD : <<extend>>
+
+@enduml

@@ -1,0 +1,5 @@
+name,slug,description,image,created_at,updated_at
+Laravel,laravel,The PHP Framework for Web Artisans,/images/laravel.jpg,2023-01-01,2023-01-01
+PHP,php,Hypertext Preprocessor,/images/php.jpg,2023-01-01,2023-01-01
+Android,android,Mobile operating system by Google,/images/android.jpg,2023-01-01,2023-01-01
+Design,design,UI/UX and Graphic Design,/images/design.jpg,2023-01-01,2023-01-01

@@ -1,4 +1,15 @@
 # Ensemble des tâches à faire
 
-## 1. Création de la base de données
+## Fonctionnalités
+* Rechercher des articles
+* Filtrer par Catégorie
 
+## Labs
+* PHP Naming Conventions
+
+# Maquette
+* Page articles (search page)
+
+# Test Maquette
+* Apprenant de 1ère année : Ayoub Faqihi (Visiteur)
+ 

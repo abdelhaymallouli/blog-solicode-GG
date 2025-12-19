@@ -1,0 +1,6 @@
+content,status,created_at,updated_at,author_email,article_slug
+,,approved,2023-07-01,2023-07-01,jane@example.com,intro-to-ai
+"Invalid status here.",invalid,2023-07-02,2023-07-02,alice@example.com,ml-basics
+"Unknown author.",approved,2023-07-03,2023-07-03,unknown@example.com,fitness-tips
+"Unknown article.",approved,2023-07-04,2023-07-04,charlie@example.com,unknown-slug
+"Missing date.",approved,, ,john@example.com,travel-to-europe
