@@ -51,6 +51,7 @@
 
     @push('scripts')
         <script>
+            // Key Elements Retrieved
             document.addEventListener('DOMContentLoaded', function () {
                 const container = document.getElementById('articles-container');
                 const searchForm = document.getElementById('search-form');
@@ -58,6 +59,7 @@
                 const filterLinks = document.querySelectorAll('#category-filters a');
 
                 // Debounce function to limit request rate
+                // Prevent spamming the server with too many requests.
                 function debounce(func, wait) {
                     let timeout;
                     return function (...args) {
