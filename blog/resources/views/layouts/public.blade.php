@@ -14,7 +14,7 @@
     <!-- Vite Assets (Tailwind CSS + JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-     <!-- Tailwind CSS -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = {
@@ -44,8 +44,45 @@
 
     @include('partials.footer')
 
-    <!-- Preline UI JS -->
-    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <script>
+        // Simple dropdown toggle with debugging
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownBtn = document.getElementById('categoriesDropdownBtn');
+            const dropdown = document.getElementById('categoriesDropdown');
+            const chevron = document.getElementById('categoriesChevron');
+
+            console.log('Dropdown elements:', { btn: !!dropdownBtn, menu: !!dropdown });
+
+            if (dropdownBtn && dropdown) {
+                dropdownBtn.addEventListener('click', function (e) {
+                    console.log('Dropdown button clicked');
+                    e.stopPropagation();
+                    const isHidden = dropdown.classList.contains('hidden');
+
+                    if (isHidden) {
+                        dropdown.classList.remove('hidden');
+                        if (chevron) chevron.classList.add('rotate-180');
+                        console.log('Dropdown opened');
+                    } else {
+                        dropdown.classList.add('hidden');
+                        if (chevron) chevron.classList.remove('rotate-180');
+                        console.log('Dropdown closed');
+                    }
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!dropdown.contains(e.target) && !dropdownBtn.contains(e.target)) {
+                        if (!dropdown.classList.contains('hidden')) {
+                            dropdown.classList.add('hidden');
+                            if (chevron) chevron.classList.remove('rotate-180');
+                            console.log('Dropdown closed by outside click');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
     @stack('scripts')
 </body>
 
