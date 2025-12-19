@@ -11,7 +11,7 @@ class CategoryService
     use BaseServiceTrait;
 
 
-    public function getAll(): Collection
+    public function getCategories(): Collection
     {
         $query = Category::query()->withCount([
             'articles' => function ($q) {

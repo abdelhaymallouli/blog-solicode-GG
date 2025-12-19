@@ -10,11 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>@yield('title')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Tailwind --}}
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-
-    @stack('styles')
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased h-full flex flex-col">
