@@ -11,7 +11,7 @@ class TagService
     use BaseServiceTrait;
 
 
-    public function getAll(): Collection
+    public function getTags(): Collection
     {
         $query = Tag::query();
         $this->applyOrder($query, 'name', 'asc');
