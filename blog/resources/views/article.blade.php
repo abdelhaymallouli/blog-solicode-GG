@@ -54,7 +54,7 @@
             @endforeach
         </div>
 
-        <!-- Comments Section -->
+        {{-- <!-- Comments Section -->
         <div class="mt-12 bg-white border border-gray-200 rounded-xl p-6 sm:p-8 dark:bg-slate-800 dark:border-gray-700">
             <h3 class="text-xl font-semibold text-gray-800 mb-6 dark:text-gray-200">Commentaires
                 ({{ $article->comments->count() }})</h3>
@@ -168,6 +168,6 @@
                     </li>
                 @endforelse
             </ul>
-        </div>
+        </div> --}}
     </main>
 @endsection

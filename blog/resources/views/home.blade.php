@@ -198,23 +198,13 @@
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Wave -->
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg class="w-full h-auto text-white" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none">
-                <path
-                    d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-                    fill="currentColor" />
-            </svg>
-        </div>
     </div>
     <!-- ========== END HERO ========== -->
 
     <!-- ========== RECENT ARTICLES ========== -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Articles Récents</h2>
+            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-black">Articles Récents</h2>
             <p class="mt-1 text-gray-600 dark:text-gray-400">Découvrez les dernières publications de la communauté.
             </p>
         </div>

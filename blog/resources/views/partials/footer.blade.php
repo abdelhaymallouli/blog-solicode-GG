@@ -32,6 +32,7 @@
         <div class="border-t border-gray-200 pt-5 dark:border-gray-700">
             <div class="flex justify-between items-center">
                 <div class="text-sm text-gray-500 dark:text-gray-400">© {{ date('Y') }} SoliCode. Tous droits réservés.
+                    <span class="ml-1">Made by Team <a href="https://github.com/abdelhaymallouli" class="font-medium text-blue-600 hover:underline dark:text-blue-500" target="_blank">Abdelhay</a></span>
                 </div>
                 <div class="flex space-x-4">
                     <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition"
