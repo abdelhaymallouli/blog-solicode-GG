@@ -1,0 +1,12 @@
+@startuml
+left to right direction
+
+actor "Visiteur" as Guest
+
+package "Lecture d'article" {
+  usecase "Lire un article" as UC_Read
+}
+
+Guest -- UC_Read
+
+@enduml

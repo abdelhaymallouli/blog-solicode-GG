@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+actor "Visiteur" as Guest
+
+package "Espace Visiteur (Public)" {
+  usecase "Consulter la liste des articles" as UC_List
+  usecase "Rechercher des articles" as UC_Search
+  usecase "Filtrer (Catégorie / Tag)" as UC_Filter
+}
+
+' Relations
+Guest -- UC_List
+
+' Extensions
+UC_Search .> UC_List : <<extend>>
+UC_Filter .> UC_List : <<extend>>
+UC_Filter .> UC_Search : <<extend>>
+
+@enduml
