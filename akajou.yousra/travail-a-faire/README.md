@@ -4,7 +4,7 @@
 - Ajax
 
 ## les fonctionnalités :
-- Gérer les articles
+- afficher les articles
 
 ## Test maquettes :
 - formateur Fatine
