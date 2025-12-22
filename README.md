@@ -4,19 +4,19 @@
 Créer un blog pour Solicode afin de partager des articles sur les activités scolaires et les expériences des anciens élèves, mais l'objectif principal est d'attirer de nouveaux stagiaires
 
 ## Réalisé par
+### Sprint 1 : 
 - MALLOULI ABDELHAY
 - BEN YEKHLEF ANOUAR
-- AZIZ SOUFIANE
-- ESSAMRACHI ALI
-- LAKHOUCHEN FADNA
 - OUALLOU MOHAMED
+### Sprint 2: 
+- AZIZ SOUFIANE
 - BEN TALEB EL MEHDI
-- JALYTA AYOUB
-- KESKSU ADNANE
-- HAD-DAD YASMINE
 - AKAJOU YOUSSRA
 - AKAJOU SALMA
-- EL ACHIRI MOHAMED AYMANE
+### SPrint 7: 
+- LAKHOUCHEN FADNA
+- KESKSU ADNANE
+- HAD-DAD YASMINE
 
 ## Supervisé par
 Mr. ESSARRAJ FOUAD
