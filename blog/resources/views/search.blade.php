@@ -79,7 +79,7 @@
 
                                 @foreach($categoriesMeta as $cat => $meta)
                                     @php
-                                        $categoryColor = str_replace('text-', 'bg-', $meta['color']);
+                                        $categoryColor = $meta['bg_color'];
                                     @endphp
                                     <a href="{{ route('articles.search', array_merge(request()->query(), ['category' => $cat])) }}"
                                         data-category-name="{{ ucfirst($cat) }}" data-category-slug="{{ $cat }}"
