@@ -1,8 +1,6 @@
 name,email,password,avatar,bio,created_at,updated_at
-John Doe,john@example.com,pass123,/avatars/john.jpg,Web developer,2023-01-01,2023-01-01
-Jane Smith,jane@example.com,pass456,/avatars/jane.jpg,Blogger,2023-02-01,2023-02-01
-Alice Johnson,alice@example.com,pass789,/avatars/alice.jpg,Editor,2023-03-01,2023-03-01
-Bob Brown,bob@example.com,pass000,/avatars/bob.jpg,Contributor,2023-04-01,2023-04-01
-Charlie Davis,charlie@example.com,pass111,/avatars/charlie.jpg,Admin,2023-05-01,2023-05-01
 Ayoub Faqihi,ayoub@example.com,pass222,/avatars/ayoub.jpg,IT-Wave Event Coordinator,2025-12-19,2025-12-19
 Yassine Hajjar,yassine@example.com,pass333,/avatars/yassine.jpg,Solicode Educator,2025-12-19,2025-12-19
+Anouar Benyekhlef,anouar.benyekhlef@example.com,pass444,/avatars/anouar.jpg,Web Enthusiast,2025-12-24,2025-12-24
+Soufiane Aziz,soufiane.aziz@example.com,pass555,/avatars/soufiane.jpg,Laravel Dev,2025-12-24,2025-12-24
+Mehdi Bentaleb,mehdi.bentaleb@example.com,pass666,/avatars/mehdi.jpg,Tech Lead,2025-12-24,2025-12-24

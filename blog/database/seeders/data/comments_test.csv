@@ -1,25 +1,7 @@
 content,status,created_at,updated_at,author_email,article_slug
-"This explained relations perfectly! Thanks.",approved,2023-07-01,2023-07-01,jane@example.com,mastering-eloquent
-"I've been struggling with polymorphic relations, any tips?",approved,2023-07-02,2023-07-02,alice@example.com,mastering-eloquent
-"Can you explain Many Through?",approved,2023-07-03,2023-07-03,bob@example.com,mastering-eloquent
-"Excellent guide, very clear.",approved,2023-07-04,2023-07-04,charlie@example.com,mastering-eloquent
-"Helping me a lot with my project.",approved,2023-07-05,2023-07-05,john@example.com,mastering-eloquent
-"Would love a video on this.",approved,2023-07-06,2023-07-06,jane@example.com,mastering-eloquent
-"Best article on Eloquent I've seen.",approved,2023-07-07,2023-07-07,alice@example.com,mastering-eloquent
-"Typo in the second code block?",approved,2023-07-08,2023-07-08,bob@example.com,mastering-eloquent
-"Thanks for sharing!",approved,2023-07-09,2023-07-09,charlie@example.com,mastering-eloquent
-"Compose is the future of Android UI.",approved,2023-07-08,2023-07-08,bob@example.com,jetpack-compose-intro
-"Using it in production now, love it.",approved,2023-07-09,2023-07-09,charlie@example.com,jetpack-compose-intro
-"State management is tricky though.",approved,2023-07-10,2023-07-10,john@example.com,jetpack-compose-intro
-"Great intro.",approved,2023-07-11,2023-07-11,jane@example.com,jetpack-compose-intro
-"Neomorphism looks cool.",approved,2023-07-10,2023-07-10,john@example.com,ui-trends-2025
-"Glassmorphism is nice but hard to read.",approved,2023-07-11,2023-07-11,jane@example.com,ui-trends-2025
-"Dark mode everything!",approved,2023-07-12,2023-07-12,alice@example.com,ui-trends-2025
-"Can't wait to upgrade to Laravel 11.",approved,2023-07-03,2023-07-03,bob@example.com,laravel-11-whats-new
-"Sanctum is so much easier than Passport.",approved,2023-07-04,2023-07-04,charlie@example.com,laravel-sanctum-api
-"Enums were long overdue in PHP.",approved,2023-07-05,2023-07-05,john@example.com,modern-php-enums
-"Great performance tips.",approved,2023-07-06,2023-07-06,jane@example.com,php-performance-tips
-"Dependency Injection is hard to grasp at first but worth it.",approved,2023-07-07,2023-07-07,alice@example.com,dependency-injection-php
-"Coroutines saved my life!",approved,2023-07-09,2023-07-09,charlie@example.com,kotlin-coroutines
-"Love the color palettes you suggested.",approved,2023-07-11,2023-07-11,jane@example.com,color-theory-web
-"Figma dev mode is a paid feature now though :(",approved,2023-07-12,2023-07-12,alice@example.com,figma-tips-dev
+"Excellente initiative pour la jeunesse.",approved,2025-12-24,2025-12-24,anouar.benyekhlef@example.com,solicode-tangier-empowering-youth
+"Très bon article, merci pour les infos.",approved,2025-12-24,2025-12-24,soufiane.aziz@example.com,solicode-tangier-empowering-youth
+"Solicode est vraiment une référence.",approved,2025-12-24,2025-12-24,mehdi.bentaleb@example.com,solicode-tangier-empowering-youth
+"L'événement de l'année !",approved,2025-12-24,2025-12-24,anouar.benyekhlef@example.com,it-wave-celebrating-digital-innovation
+"Bravo aux organisateurs.",approved,2025-12-24,2025-12-24,soufiane.aziz@example.com,it-wave-celebrating-digital-innovation
+"Hâte de voir la prochaine édition.",approved,2025-12-24,2025-12-24,mehdi.bentaleb@example.com,it-wave-celebrating-digital-innovation

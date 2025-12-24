@@ -5,14 +5,14 @@
             <!-- Logo -->
             <a class="flex-none inline-flex items-center group" href="{{ route('home') }}">
                 <img src="{{ asset('images/solicode-logo.png') }}" alt="SoliCode Logo"
-                    class="h-14 w-auto group-hover:scale-105 transition-transform duration-300">
+                    class="h-20 w-auto group-hover:scale-105 transition-transform duration-300">
             </a>
 
             <!-- Mobile Button -->
             <div class="sm:hidden">
-                <button type="button"
-                    class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-lg border border-gray-200 font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                    data-hs-collapse="#navbar-collapse" aria-controls="navbar-collapse" aria-label="Toggle navigation">
+                <button type="button" id="navbar-toggle"
+                    class="p-2 inline-flex justify-center items-center gap-2 rounded-lg border border-gray-200 font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    aria-controls="navbar-collapse" aria-label="Toggle navigation">
                     <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

@@ -1,11 +1,9 @@
 name,slug,created_at,updated_at
-Eloquent,eloquent,2023-01-01,2023-01-01
-Routing,routing,2023-01-01,2023-01-01
-Validation,validation,2023-01-01,2023-01-01
-Jetpack Compose,jetpack-compose,2023-01-01,2023-01-01
-Kotlin,kotlin,2023-01-01,2023-01-01
-Figma,figma,2023-01-01,2023-01-01
-UI/UX,ui-ux,2023-01-01,2023-01-01
+Digital,digital,2025-12-24,2025-12-24
+Morocco,morocco,2025-12-24,2025-12-24
+Education,education,2025-12-24,2025-12-24
+Events,events,2025-12-24,2025-12-24
+Laravel,laravel,2023-01-01,2023-01-01
+PHP,php,2023-01-01,2023-01-01
 API,api,2023-01-01,2023-01-01
-Tailwind CSS,tailwind-css,2023-01-01,2023-01-01
-Testing,testing,2023-01-01,2023-01-01
+UI/UX,ui-ux,2023-01-01,2023-01-01

@@ -1,14 +1,14 @@
 <footer class="bg-white border-t border-gray-200 mt-auto w-full dark:bg-slate-900 dark:border-gray-700">
     <div class="max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <div class="col-span-1">
-                <a class="flex-none text-xl font-semibold text-blue-600 mb-3 block dark:text-white"
-                    href="{{ route('home') }}" aria-label="Brand">SoliCode<span
-                        class="text-gray-900 dark:text-gray-200">Blog</span></a>
+            <div class="col-span-1 flex flex-col justify-center">
+                <a class="flex-none mb-4 block" href="{{ route('home') }}" aria-label="Brand">
+                    <img src="{{ asset('images/solicode-logo.png') }}" alt="SoliCode Logo" class="h-24 w-auto">
+                </a>
                 <p class="text-gray-500 text-sm dark:text-gray-400">Le blog tech de référence pour les développeurs
                     Solicode. Tutoriels, articles et veilles technologiques.</p>
             </div>
-            <div class="col-span-1">
+            <!-- <div class="col-span-1 mt-5 mr-3">
                 <h4 class="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3 dark:text-gray-200">
                     Ressources</h4>
                 <div class="grid space-y-2">
@@ -18,7 +18,7 @@
                             href="#">Tutoriels</a></p>
                 </div>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 mt-5">
                 <h4 class="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3 dark:text-gray-200">
                     Légal</h4>
                 <div class="grid space-y-2">
@@ -27,7 +27,7 @@
                     <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-800 text-sm dark:text-gray-400 dark:hover:text-gray-200"
                             href="#">Politique de confidentialité</a></p>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="border-t border-gray-200 pt-5 dark:border-gray-700">
             <div class="flex justify-between items-center">

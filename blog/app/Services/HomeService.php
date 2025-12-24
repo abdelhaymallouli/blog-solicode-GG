@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Services\Traits\BaseServiceTrait;
+use App\Traits\BaseServiceTrait;
 
 class HomeService
 {
@@ -18,11 +18,9 @@ class HomeService
      */
     public function getHomePageData(): array
     {
-        $featuredArticle = $this->articleService->getFeaturedArticle();
         $latestArticles = $this->articleService->getLatestArticles(6);
 
         return [
-            'featuredArticle' => $featuredArticle,
             'latestArticles' => $latestArticles,
         ];
     }

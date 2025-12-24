@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
-use App\Services\Traits\BaseServiceTrait;
+use App\Traits\BaseServiceTrait;
 
 class TagService
 {

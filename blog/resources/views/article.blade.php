@@ -9,10 +9,10 @@
         <!-- Article Header -->
         <div class="mb-8">
             @if($article->categories->isNotEmpty())
-                <span
-                    class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">
+                <a href="{{ route('articles.search', ['category' => $article->categories->first()->slug]) }}"
+                    class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
                     {{ $article->categories->first()->name }}
-                </span>
+                </a>
             @endif
             <h1 class="text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl my-4 font-heading">{{ $article->title }}
             </h1>

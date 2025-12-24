@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Article;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use App\Services\Traits\BaseServiceTrait;
+use App\Traits\BaseServiceTrait;
 
 class ArticleService
 {
