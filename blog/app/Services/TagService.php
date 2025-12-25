@@ -4,11 +4,9 @@ namespace App\Services;
 
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
-use App\Traits\BaseServiceTrait;
-
-class TagService
+class TagService extends BaseService
 {
-    use BaseServiceTrait;
+
 
 
     public function getTags(): Collection

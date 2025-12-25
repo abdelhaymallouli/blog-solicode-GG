@@ -21,9 +21,8 @@ class AppServiceProvider extends ServiceProvider
     {
         \Illuminate\Pagination\Paginator::useTailwind();
 
-        \Illuminate\Support\Facades\View::composer(['partials.nav', 'search'], function ($view) use ($categoryService) {
+        \Illuminate\Support\Facades\View::composer(['partials.nav', 'search', 'partials.header', 'partials.footer'], function ($view) use ($categoryService) {
             $view->with('globalCategories', $categoryService->getCategories());
-            $view->with('globalCategoriesMeta', $categoryService->getCategoryMeta());
         });
     }
 }

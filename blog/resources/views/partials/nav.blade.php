@@ -68,17 +68,15 @@
                         class="hidden absolute top-full left-0 sm:left-auto sm:right-0 mt-2 w-48 bg-white sm:shadow-xl rounded-lg p-2 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
                         style="z-index: 9999;">
 
+
                         @foreach($globalCategories as $category)
                             @php
-                                $meta = $globalCategoriesMeta[$category->slug] ?? ['color' => 'text-gray-500', 'bg_color' => 'bg-gray-100'];
-                                $iconColor = $meta['color'] ?? 'text-gray-500';
                                 $isActive = request('category') == $category->slug;
                             @endphp
                             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ $isActive ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
                                 href="{{ route('articles.search', ['category' => $category->slug]) }}">
-                                <span class="{{ $iconColor }}">
-                                    {!! $category->image !!}
-                                </span>
+                                <i data-lucide="{{ $category->icon }}"
+                                    class="w-4 h-4 {{ $isActive ? 'text-blue-600 dark:text-blue-400' : $category->color }}"></i>
                                 {{ $category->name }}
                             </a>
                         @endforeach

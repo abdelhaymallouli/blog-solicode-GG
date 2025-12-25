@@ -3,9 +3,10 @@ import './bootstrap';
 import { createIcons, icons } from 'lucide';
 import 'preline';
 
-createIcons({ icons });
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Lucide icons after DOM is loaded
+    createIcons({ icons });
     const dropdownBtn = document.getElementById('categoriesDropdownBtn');
     const dropdown = document.getElementById('categoriesDropdown');
     const chevron = document.getElementById('categoriesChevron');

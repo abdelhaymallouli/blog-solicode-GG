@@ -1,3 +1,17 @@
+import { createIcons } from 'lucide';
+
+// Helper function to get category color by slug
+function getCategoryColorBySlug(slug) {
+    const colorMap = {
+        'laravel': 'text-red-500',
+        'php': 'text-indigo-500',
+        'android': 'text-green-500',
+        'design': 'text-pink-500',
+        'education': 'text-amber-500',
+        'activities': 'text-cyan-500'
+    };
+    return colorMap[slug] || 'text-gray-500';
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('articles-container');
@@ -44,24 +58,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (currentFilterText && filterItems) {
                     let found = false;
                     filterItems.forEach(item => {
-                        const dot = item.querySelector('span');
-                        const colorClass = item.dataset.categoryColor;
+                        const categorySlug = item.dataset.categorySlug;
 
-                        if (item.dataset.categorySlug === (category || "")) {
+                        if (categorySlug === (category || "")) {
+                            // Active state
                             item.classList.add('bg-blue-600', 'text-white');
                             item.classList.remove('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
                             currentFilterText.textContent = item.dataset.categoryName;
-                            if (dot) {
-                                dot.classList.add('bg-white');
-                                if (colorClass) dot.classList.remove(colorClass);
+
+                            // Update icon color - find the SVG created by Lucide
+                            const svg = item.querySelector('svg');
+                            if (svg) {
+                                svg.classList.remove('text-red-500', 'text-indigo-500', 'text-green-500', 'text-pink-500', 'text-amber-500', 'text-cyan-500', 'text-gray-500');
+                                svg.classList.add('text-white');
                             }
                             found = true;
                         } else {
+                            // Inactive state
                             item.classList.remove('bg-blue-600', 'text-white');
                             item.classList.add('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
-                            if (dot) {
-                                dot.classList.remove('bg-white');
-                                if (colorClass) dot.classList.add(colorClass);
+
+                            // Update icon color
+                            const svg = item.querySelector('svg');
+                            if (svg) {
+                                const iconColor = getCategoryColorBySlug(categorySlug);
+                                svg.classList.remove('text-white', 'text-red-500', 'text-indigo-500', 'text-green-500', 'text-pink-500', 'text-amber-500', 'text-cyan-500', 'text-gray-500');
+                                svg.classList.add(iconColor);
                             }
                         }
                     });
@@ -153,22 +175,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 i.classList.remove('bg-blue-600', 'text-white');
                 i.classList.add('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
 
-                const dot = i.querySelector('span');
-                const colorClass = i.dataset.categoryColor;
-                if (dot) {
-                    dot.classList.remove('bg-white');
-                    if (colorClass) dot.classList.add(colorClass);
+                // Update icon color - work with SVG
+                const svg = i.querySelector('svg');
+                if (svg) {
+                    const iconColor = getCategoryColorBySlug(i.dataset.categorySlug);
+                    svg.classList.remove('text-white', 'text-red-500', 'text-indigo-500', 'text-green-500', 'text-pink-500', 'text-amber-500', 'text-cyan-500', 'text-gray-500');
+                    svg.classList.add(iconColor);
                 }
             });
 
             this.classList.add('bg-blue-600', 'text-white');
             this.classList.remove('text-gray-800', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-700', 'dark:hover:text-white');
 
-            const activeDot = this.querySelector('span');
-            const activeColorClass = this.dataset.categoryColor;
-            if (activeDot) {
-                activeDot.classList.add('bg-white');
-                if (activeColorClass) activeDot.classList.remove(activeColorClass);
+            // Update active icon color - work with SVG
+            const activeSvg = this.querySelector('svg');
+            if (activeSvg) {
+                activeSvg.classList.remove('text-red-500', 'text-indigo-500', 'text-green-500', 'text-pink-500', 'text-amber-500', 'text-cyan-500', 'text-gray-500');
+                activeSvg.classList.add('text-white');
             }
 
             fetchArticles(this.href);

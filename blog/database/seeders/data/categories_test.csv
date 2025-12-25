@@ -1,7 +1,7 @@
-name,slug,description,image,created_at,updated_at
-Laravel,laravel,The PHP Framework for Web Artisans,"<i data-lucide=""layers""></i>",2023-01-01,2023-01-01
-PHP,php,Hypertext Preprocessor,"<i data-lucide=""file-code-2""></i>",2023-01-01,2023-01-01
-Android,android,Mobile operating system by Google,"<i data-lucide=""smartphone""></i>",2023-01-01,2023-01-01
-Design,design,UI/UX and Graphic Design,"<i data-lucide=""pen-tool""></i>",2023-01-01,2023-01-01
-Activities,activities,Events and activities organized by Solicode,"<i data-lucide=""calendar""></i>",2025-12-19,2025-12-19
-Education,education,Educational programs and workshops,"<i data-lucide=""graduation-cap""></i>",2025-12-19,2025-12-19
+name,slug,description,icon,color,bg_color,created_at,updated_at
+Laravel,laravel,The PHP Framework for Web Artisans,layers,text-red-500,bg-red-500,2023-01-01,2023-01-01
+PHP,php,Hypertext Preprocessor,file-code-2,text-indigo-500,bg-indigo-500,2023-01-01,2023-01-01
+Android,android,Mobile operating system by Google,smartphone,text-green-500,bg-green-500,2023-01-01,2023-01-01
+Design,design,UI/UX and Graphic Design,pen-tool,text-pink-500,bg-pink-500,2023-01-01,2023-01-01
+Activities,activities,Events and activities organized by Solicode,calendar,text-cyan-500,bg-cyan-500,2025-12-19,2025-12-19
+Education,education,Educational programs and workshops,graduation-cap,text-amber-500,bg-amber-500,2025-12-19,2025-12-19

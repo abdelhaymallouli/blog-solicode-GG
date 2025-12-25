@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -21,25 +20,24 @@ class CategorySeeder extends Seeder
         }
 
         $file = fopen($path, 'r');
-        $headers = fgetcsv($file); // Skip headers
+        $headers = fgetcsv($file); // Read headers
 
-        while (($row = fgetcsv($file)) !== false) {
-            [$name, $slug, $description, $image, $created_at, $updated_at] = $row;
-
-            // Generate slug if missing
-            if (empty($slug)) {
-                $slug = Str::slug($name);
-            }
+        while (($data = fgetcsv($file)) !== false) {
+            // Map CSV columns to associative array using headers
+            $row = array_combine($headers, $data);
 
             // Use updateOrInsert to make it idempotent, keying on unique slug
             DB::table('categories')->updateOrInsert(
-                ['slug' => $slug],
+                ['slug' => $row['slug']],
                 [
-                    'name' => $name,
-                    'description' => $description,
-                    'image' => $image,
-                    'created_at' => $created_at,
-                    'updated_at' => now(),
+                    'name' => $row['name'],
+                    'slug' => $row['slug'],
+                    'description' => $row['description'],
+                    'icon' => $row['icon'],
+                    'color' => $row['color'],
+                    'bg_color' => $row['bg_color'],
+                    'created_at' => $row['created_at'],
+                    'updated_at' => $row['updated_at'],
                 ]
             );
         }

@@ -9,21 +9,19 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     public function __construct(
-        protected ArticleService $articleService,
-        protected \App\Services\CategoryService $categoryService
+        protected ArticleService $articleService
     ) {
     }
 
     public function index(Request $request)
     {
         $articles = $this->articleService->searchArticles($request->all());
-        $categoriesMeta = $this->categoryService->getCategoryMeta();
 
         if ($request->ajax()) {
-            return view('partials.articles-list', compact('articles', 'categoriesMeta'));
+            return view('partials.articles-list', compact('articles'));
         }
 
-        return view('search', compact('articles', 'categoriesMeta'));
+        return view('search', compact('articles'));
     }
 
     public function show(Article $article)

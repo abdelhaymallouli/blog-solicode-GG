@@ -5,11 +5,9 @@ namespace App\Services;
 use App\Models\Article;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use App\Traits\BaseServiceTrait;
-
-class ArticleService
+class ArticleService extends BaseService
 {
-    use BaseServiceTrait;
+
 
     /**
      * Get featured article for homepage
