@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoliCode Blog - @yield('title', 'Accueil')</title>
+    <title>Solicode Blog - @yield('title', 'Accueil')</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/solicode-logo.png') }}" type="image/x-icon">
