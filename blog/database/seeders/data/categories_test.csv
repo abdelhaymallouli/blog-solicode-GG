@@ -1,7 +1,7 @@
 name,slug,description,image,created_at,updated_at
-Laravel,laravel,The PHP Framework for Web Artisans,/images/laravel.jpg,2023-01-01,2023-01-01
-PHP,php,Hypertext Preprocessor,/images/php.jpg,2023-01-01,2023-01-01
-Android,android,Mobile operating system by Google,/images/android.jpg,2023-01-01,2023-01-01
-Design,design,UI/UX and Graphic Design,/images/design.jpg,2023-01-01,2023-01-01
-Activities,activities,Events and activities organized by Solicode,/images/activities.jpg,2025-12-19,2025-12-19
-Education,education,Educational programs and workshops,/images/education.jpg,2025-12-19,2025-12-19
+Laravel,laravel,The PHP Framework for Web Artisans,"<i data-lucide=""layers""></i>",2023-01-01,2023-01-01
+PHP,php,Hypertext Preprocessor,"<i data-lucide=""file-code-2""></i>",2023-01-01,2023-01-01
+Android,android,Mobile operating system by Google,"<i data-lucide=""smartphone""></i>",2023-01-01,2023-01-01
+Design,design,UI/UX and Graphic Design,"<i data-lucide=""pen-tool""></i>",2023-01-01,2023-01-01
+Activities,activities,Events and activities organized by Solicode,"<i data-lucide=""calendar""></i>",2025-12-19,2025-12-19
+Education,education,Educational programs and workshops,"<i data-lucide=""graduation-cap""></i>",2025-12-19,2025-12-19

@@ -16,6 +16,8 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
+        "lucide": "^0.562.0",
+        "preline": "^3.2.3",
         "tailwind": "^4.0.0"
     }
 }

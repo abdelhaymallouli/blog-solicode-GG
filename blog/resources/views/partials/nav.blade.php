@@ -47,7 +47,7 @@
                 <!-- Categories Dropdown -->
                 <div class="relative">
                     <button id="categoriesDropdownBtn" type="button"
-                        class="inline-flex items-center gap-x-2 w-full sm:w-auto text-gray-600 hover:text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 transition-all {{ in_array(request('category'), ['laravel', 'php', 'android', 'design', 'education', 'activities']) ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-500' : '' }}">
+                        class="inline-flex items-center gap-x-2 w-full sm:w-auto text-gray-600 hover:text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 transition-all {{ in_array(request('category'), $globalCategories->pluck('slug')->toArray()) ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-500' : '' }}">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -68,93 +68,20 @@
                         class="hidden absolute top-full left-0 sm:left-auto sm:right-0 mt-2 w-48 bg-white sm:shadow-xl rounded-lg p-2 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
                         style="z-index: 9999;">
 
-                        <!-- Laravel -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'laravel' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'laravel']) }}">
-                            <svg class="w-4 h-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m12 19 7-7 3 3-7 7-3-3z" />
-                                <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-                                <path d="m2 2 7.586 7.586" />
-                                <circle cx="11" cy="11" r="2" />
-                            </svg>
-                            Laravel
-                        </a>
-
-                        <!-- PHP -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'php' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'php']) }}">
-                            <svg class="w-4 h-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
-                                <path d="M8.5 8.5v.01" />
-                                <path d="M16 12v.01" />
-                                <path d="M12 16v.01" />
-                            </svg>
-                            PHP
-                        </a>
-
-                        <!-- Android -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'android' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'android']) }}">
-                            <svg class="w-4 h-4 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-                                <path d="M12 18h.01" />
-                            </svg>
-                            Android
-                        </a>
-
-                        <!-- Design -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'design' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'design']) }}">
-                            <svg class="w-4 h-4 text-pink-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z" />
-                                <path d="m14 7 3 3" />
-                                <path d="M5 6v4" />
-                                <path d="M19 14v4" />
-                                <path d="M10 2v2" />
-                                <path d="M7 8H3" />
-                                <path d="M21 16h-4" />
-                                <path d="M11 3H9" />
-                            </svg>
-                            Design
-                        </a>
-
-                        <!-- Education -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'education' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'education']) }}">
-                            <svg class="w-4 h-4 text-amber-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                            </svg>
-                            Education
-                        </a>
-
-                        <!-- Activities -->
-                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ request('category') == 'activities' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
-                            href="{{ route('articles.search', ['category' => 'activities']) }}">
-                            <svg class="w-4 h-4 text-cyan-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.16 0-3" />
-                                <path d="m2.3 2.3 7.2 7.2" />
-                                <path d="m14 11 9-9" />
-                                <path d="m9 14-7 9" />
-                                <path d="m21.7 21.7-7.2-7.2" />
-                                <path d="M11 14c-1.26 1.5-5 2-5 2s.5-3.74 2-5c.84-.71 2.16-.71 3 0" />
-                                <path d="M13 10c1.26-1.5 5-2 5-2s-.5 3.74-2 5c-.84.71-2.16.71-3 0" />
-                            </svg>
-                            Activities
-                        </a>
+                        @foreach($globalCategories as $category)
+                            @php
+                                $meta = $globalCategoriesMeta[$category->slug] ?? ['color' => 'text-gray-500', 'bg_color' => 'bg-gray-100'];
+                                $iconColor = $meta['color'] ?? 'text-gray-500';
+                                $isActive = request('category') == $category->slug;
+                            @endphp
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm font-medium {{ $isActive ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }} transition-colors"
+                                href="{{ route('articles.search', ['category' => $category->slug]) }}">
+                                <span class="{{ $iconColor }}">
+                                    {!! $category->image !!}
+                                </span>
+                                {{ $category->name }}
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 

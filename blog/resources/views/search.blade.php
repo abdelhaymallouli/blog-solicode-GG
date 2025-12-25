@@ -77,17 +77,20 @@
                                     Toutes les catégories
                                 </a>
 
-                                @foreach($categoriesMeta as $cat => $meta)
+                                @foreach($globalCategories as $category)
                                     @php
-                                        $categoryColor = $meta['bg_color'];
+                                        $meta = $globalCategoriesMeta[$category->slug] ?? ['color' => 'text-gray-500', 'bg_color' => 'bg-gray-500'];
+                                        $iconColor = $meta['color']; // Text color for icon
+                                        $isActive = request('category') == $category->slug;
                                     @endphp
-                                    <a href="{{ route('articles.search', array_merge(request()->query(), ['category' => $cat])) }}"
-                                        data-category-name="{{ ucfirst($cat) }}" data-category-slug="{{ $cat }}"
-                                        data-category-color="{{ $categoryColor }}"
-                                        class="filter-item flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm transition-all {{ request('category') == $cat ? 'bg-blue-600 text-white' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }}">
-                                        <span
-                                            class="w-2 h-2 rounded-full {{ request('category') == $cat ? 'bg-white' : $categoryColor }}"></span>
-                                        {{ ucfirst($cat) }}
+                                    <a href="{{ route('articles.search', array_merge(request()->query(), ['category' => $category->slug])) }}"
+                                        data-category-name="{{ $category->name }}" data-category-slug="{{ $category->slug }}"
+                                        data-category-color="{{ $meta['bg_color'] }}"
+                                        class="filter-item flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm transition-all {{ $isActive ? 'bg-blue-600 text-white' : 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' }}">
+                                        <span class="{{ $isActive ? 'text-white' : $iconColor }}">
+                                            {!! $category->image !!}
+                                        </span>
+                                        {{ $category->name }}
                                     </a>
                                 @endforeach
                             </div>

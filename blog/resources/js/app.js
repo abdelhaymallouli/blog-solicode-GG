@@ -1,5 +1,10 @@
 import './bootstrap';
 
+import { createIcons, icons } from 'lucide';
+import 'preline';
+
+createIcons({ icons });
+
 document.addEventListener('DOMContentLoaded', function () {
     const dropdownBtn = document.getElementById('categoriesDropdownBtn');
     const dropdown = document.getElementById('categoriesDropdown');

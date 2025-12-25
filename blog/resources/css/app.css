@@ -5,6 +5,7 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../../node_modules/preline/dist/*.js';
 
 @theme {
     /* Font families */
