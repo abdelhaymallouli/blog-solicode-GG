@@ -10,7 +10,7 @@
                     <div class="sm:text-center lg:text-left">
                         <!-- Badge -->
                         <div
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-10">
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,7 +19,8 @@
                             <span>Formation & Développement</span>
                         </div>
 
-                        <h1 class="text-4xl tracking-tight mt-5 font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        <h1
+                            class="font-heading text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl leading-tight">
                             <span class="block xl:inline">Partagez en</span>
                             <span class="block text-blue-600 xl:inline">Solicode</span>
                         </h1>
@@ -32,8 +33,10 @@
                             <div class="rounded-md shadow">
                                 <a href="{{ route('articles.search') }}"
                                     class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 md:text-base transition-all shadow-lg shadow-blue-600/20 gap-2">
-                                    <svg class="w-5 h-5 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    <svg class="w-5 h-5 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                     Explorer les Articles
                                 </a>
@@ -63,8 +66,8 @@
 
         <!-- Hero Image / Illustration -->
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="{{ asset('images/banner2.jpg') }}"
-                alt="Solicode Banner">
+            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+                src="{{ asset('images/banner2.jpg') }}" alt="Solicode Banner">
         </div>
     </div>
 
