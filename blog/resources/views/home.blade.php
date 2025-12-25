@@ -20,7 +20,7 @@
                         </div>
 
                         <h1 class="text-4xl tracking-tight mt-5 font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="block xl:inline">Apprenez à coder avec</span>
+                            <span class="block xl:inline">Partagez en</span>
                             <span class="block text-blue-600 xl:inline">Solicode</span>
                         </h1>
                         <p
@@ -31,7 +31,10 @@
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start gap-3">
                             <div class="rounded-md shadow">
                                 <a href="{{ route('articles.search') }}"
-                                    class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 md:text-base transition-all shadow-lg shadow-blue-600/20">
+                                    class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 md:text-base transition-all shadow-lg shadow-blue-600/20 gap-2">
+                                    <svg class="w-5 h-5 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
                                     Explorer les Articles
                                 </a>
                             </div>
